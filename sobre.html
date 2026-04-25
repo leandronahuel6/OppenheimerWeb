@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre la Película | Oppenheimer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .synopsis { font-size: 1.1rem; max-width: 800px; margin: 0 auto 3rem auto; text-align: center; color: var(--text-muted); }
+        .characters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .character-card { background: #111; padding: 2rem; border-top: 3px solid var(--accent-color); border-radius: 5px; transition: transform 0.3s; }
+        .character-card:hover { transform: translateY(-5px); }
+        .character-name { font-family: var(--font-title); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .character-actor { color: var(--accent-color); font-weight: bold; margin-bottom: 1rem; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo">OPPENHEIMER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre.html" style="color: var(--accent-color);">Sobre la Película</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="premios.html">Premios</a></li>
+                <li><a href="barbenheimer.html">Barbenheimer</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1 class="page-title">La Historia y los Hombres</h1>
+        </div>
+        
+        <section class="container">
+            <p class="synopsis">
+                Escrita y dirigida por Christopher Nolan, Oppenheimer es un épico thriller rodado en IMAX® que transporta al público a la trepidante paradoja de un hombre enigmático que debe arriesgarse a destruir el mundo para poder salvarlo.
+            </p>
+
+            <div class="characters-grid">
+                <article class="character-card">
+                    <h2 class="character-name">J. Robert Oppenheimer</h2>
+                    <p class="character-actor">Interpretado por: Cillian Murphy</p>
+                    <p>El brillante físico teórico que lideró el Proyecto Manhattan. Su mente concibió el arma que terminaría la guerra, pero su conciencia cargó con el peso del futuro de la humanidad.</p>
+                </article>
+                
+                <article class="character-card">
+                    <h2 class="character-name">Lewis Strauss</h2>
+                    <p class="character-actor">Interpretado por: Robert Downey Jr.</p>
+                    <p>Miembro fundador de la Comisión de Energía Atómica de EE. UU. Una figura ambiciosa y calculadora cuya relación con Oppenheimer define gran parte de la intriga política post-guerra.</p>
+                </article>
+
+                <article class="character-card">
+                    <h2 class="character-name">Leslie Groves</h2>
+                    <p class="character-actor">Interpretado por: Matt Damon</p>
+                    <p>El pragmático general del Cuerpo de Ingenieros del Ejército de EE. UU. que dirigió el Proyecto Manhattan, eligiendo a Oppenheimer a pesar de sus afiliaciones políticas pasadas.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Proyecto Educativo/Portafolio. Sitio no oficial de la película Oppenheimer.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

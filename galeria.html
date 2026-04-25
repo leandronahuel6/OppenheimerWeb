@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería | Oppenheimer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); grid-auto-rows: 250px; gap: 15px; }
+        .gallery-item { background-color: #222; overflow: hidden; border-radius: 4px; position: relative; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: grayscale(50%); }
+        .gallery-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
+        .item-large { grid-column: span 2; grid-row: span 2; }
+        @media (max-width: 600px) { .item-large { grid-column: span 1; grid-row: span 1; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo">OPPENHEIMER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre.html">Sobre la Película</a></li>
+                <li><a href="galeria.html" style="color: var(--accent-color);">Galería</a></li>
+                <li><a href="premios.html">Premios</a></li>
+                <li><a href="barbenheimer.html">Barbenheimer</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1 class="page-title">Visión Visual</h1>
+        </div>
+        
+        <section class="container gallery-grid">
+    <div class="gallery-item item-large" tabindex="0" role="button" aria-label="Ver imagen de Prueba Trinity" data-src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?q=80&w=1000&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?q=80&w=600&auto=format&fit=crop" alt="Prueba Trinity">
+        <div class="overlay"><span>Ampliar</span></div>
+    </div>
+    <div class="gallery-item" tabindex="0" role="button" aria-label="Ver imagen de Átomo" data-src="https://images.unsplash.com/photo-1614728263694-6101c5a98bf6?q=80&w=1000&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1614728263694-6101c5a98bf6?q=80&w=600&auto=format&fit=crop" alt="Átomo">
+        <div class="overlay"><span>Ampliar</span></div>
+    </div>
+    <div class="gallery-item" tabindex="0" role="button" aria-label="Ver imagen de Pizarra Científica" data-src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop" alt="Pizarra Científica">
+        <div class="overlay"><span>Ampliar</span></div>
+    </div>
+    <div class="gallery-item" tabindex="0" role="button" aria-label="Ver imagen de Desierto" data-src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1000&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=600&auto=format&fit=crop" alt="Desierto Los Alamos">
+        <div class="overlay"><span>Ampliar</span></div>
+    </div>
+    <div class="gallery-item" tabindex="0" role="button" aria-label="Ver imagen de Explosión" data-src="https://images.unsplash.com/photo-1555626906-fcf10d6851b4?q=80&w=1000&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1555626906-fcf10d6851b4?q=80&w=600&auto=format&fit=crop" alt="Explosión">
+        <div class="overlay"><span>Ampliar</span></div>
+    </div>
+</section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Cerrar imagen">&times;</button>
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="Imagen ampliada">
+    </div>
+</div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Proyecto Educativo/Portafolio. Sitio no oficial de la película Oppenheimer.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
