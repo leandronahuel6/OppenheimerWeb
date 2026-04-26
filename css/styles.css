@@ -584,7 +584,7 @@ footer {
     justify-content: center;
     align-items: center;
     /* Nota: Reemplaza esto con una foto espectacular de la peli en tu carpeta img/ */
-    background: url('/OppenherimerWeb/img/Explocion.jpeg') center/cover no-repeat;
+    background: url('../img/Explocion.jpeg') center/cover no-repeat;
     background-color: #111; /* Fondo de seguridad por si no hay imagen */
 }
 
