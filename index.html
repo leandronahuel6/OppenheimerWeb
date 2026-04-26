@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oppenheimer | El Destructor de Mundos</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -37,15 +37,158 @@
             <div class="hero-overlay"></div>
 
             <div class="hero-content">
-                <h1>Oppenheimer</h1>
-                <p>"Me he convertido en la muerte, el destructor de mundos."</p>
-                <div class="cinematic-timer" id="timer">T- 00:00:00:00</div>
+                <h1 class="animate-oppenheimer">Oppenheimer</h1>
+                
+                <p class="animate-fade-up" style="animation-delay: 2.5s;">"Me he convertido en la muerte, el destructor de mundos."</p>
+                <div class="cinematic-timer animate-fade-up" id="timer" style="animation-delay: 3.0s;">T- 00:00:00:00</div>
+                
+                <div class="hero-buttons animate-fade-up" style="animation-delay: 3.5s;">
+                    <a href="sobre.html" class="btn-primary">Descubrir la Historia</a>
+                    <a href="galeria.html" class="btn-secondary">Ver Galería</a>
+                </div>
             </div>
         </section>
+
+        <section class="home-intro container">
+            <div class="intro-content">
+                <h2 class="intro-title">Un Mundo Cambiado Para Siempre</h2>
+                <div class="intro-divider"></div>
+                <p class="intro-text">
+                    Adéntrate en la mente del físico J. Robert Oppenheimer y el Proyecto Manhattan. 
+                    Una carrera contra el tiempo y la moralidad que definió el destino de la humanidad en la era atómica.
+                </p>
+            </div>
+        </section>
+
+        <section class="reviews-section">
+            <div class="container">
+                <h2 class="reviews-title">El Logro Cinematográfico del Año</h2>
+                
+                <div class="reviews-grid">
+                    <div class="review-card animate-fade-up">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"Una obra maestra monumental. Visualmente asombrosa y moralmente compleja."</p>
+                        <p class="author">- The New York Times</p>
+                    </div>
+                    
+                    <div class="review-card animate-fade-up" style="animation-delay: 0.2s;">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"Christopher Nolan en su máxima expresión. Cillian Murphy entrega la actuación de su vida."</p>
+                        <p class="author">- Empire Magazine</p>
+                    </div>
+                    
+                    <div class="review-card animate-fade-up" style="animation-delay: 0.4s;">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"El thriller histórico más tenso, espectacular y fascinante de la década."</p>
+                        <p class="author">- Variety</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="trailer-section">
+            <div class="trailer-bg">
+                <div class="trailer-overlay"></div>
+                
+                <div class="trailer-content animate-fade-up">
+                    <h2 class="trailer-title">La Historia Detrás de la Bomba</h2>
+                    <button class="play-btn" id="openTrailerBtn" aria-label="Reproducir Tráiler">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <p class="trailer-subtitle">Ver Tráiler Oficial</p>
+                </div>
+            </div>
+        </section>
+    </main> <div class="video-modal" id="videoModal" aria-hidden="true">
+        <button class="modal-close" id="closeTrailerBtn" aria-label="Cerrar video">&times;</button>
+        <div class="modal-content">
+            <div class="iframe-container" id="iframeContainer"></div>
+        </div>
+    </div>
+
+    <section class="cast-section">
+            <div class="container">
+                <h2 class="section-title animate-fade-up">El Reparto</h2>
+                
+                <div class="cast-grid">
+                    <div class="cast-card animate-fade-up" style="animation-delay: 0.1s;">
+                        <img src="img/Cillian.webp" alt="Cillian Murphy" class="cast-img" onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop'; this.style.filter='grayscale(100%)'">
+                        <div class="cast-info">
+                            <h3>Cillian Murphy</h3>
+                            <p>J. Robert Oppenheimer</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cast-card animate-fade-up" style="animation-delay: 0.2s;">
+                        <img src="img/Emily.avif" alt="Emily Blunt" class="cast-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop'; this.style.filter='grayscale(100%)'">
+                        <div class="cast-info">
+                            <h3>Emily Blunt</h3>
+                            <p>Kitty Oppenheimer</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cast-card animate-fade-up" style="animation-delay: 0.3s;">
+                        <img src="img/Robert.jpg" alt="Robert Downey Jr." class="cast-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop'; this.style.filter='grayscale(100%)'">
+                        <div class="cast-info">
+                            <h3>Robert Downey Jr.</h3>
+                            <p>Lewis Strauss</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cast-card animate-fade-up" style="animation-delay: 0.4s;">
+                        <img src="img/Matt.jpg" alt="Matt Damon" class="cast-img" onerror="this.src='https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=400&auto=format&fit=crop'; this.style.filter='grayscale(100%)'">
+                        <div class="cast-info">
+                            <h3>Matt Damon</h3>
+                            <p>Leslie Groves</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cast-action animate-fade-up" style="animation-delay: 0.5s;">
+                    <a href="sobre.html" class="btn-secondary">Conocer más detalles</a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer>
-        <p>&copy; 2026 Proyecto Educativo/Portafolio. Sitio no oficial de la película Oppenheimer.</p>
+        <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+        <div class="footer-content">
+            <div class="footer-logos tech-logos">
+                <img src="img/dolby.png" alt="Dolby Cinema">
+                <img src="img/imax.png" alt="IMAX">
+                <img src="img/70mm.png" alt="70MM FILM">
+            </div>
+
+            <div class="footer-logos studio-logos">
+                <img src="img/Syncopy.png" alt="Syncopy">
+                <img src="img/Universal.png" alt="Universal Pictures">
+                <img src="img/rated-r.png" alt="Rated R"> 
+            </div>
+
+            <ul class="footer-links">
+                <li><a href="#">Ad Choices</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Cookie Notice</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Terms of Service</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Filmratings.com</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">MPA.ORG</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Feedback</a></li>
+            </ul>
+
+            <div class="footer-copyright">
+                <p>MOVIE PLATFORM © 2026 POWSTER &copy; 2026 Universal Pictures. ALL RIGHTS RESERVED.</p>
+                <p style="margin-top: 5px; opacity: 0.5;">Proyecto educativo de portafolio web. Sitio no oficial.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="js/script.js"></script>

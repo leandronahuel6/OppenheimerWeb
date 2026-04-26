@@ -86,3 +86,56 @@ if (lightbox) {
         }
     });
 }
+
+// ================= LÓGICA DEL BOTÓN "VOLVER ARRIBA" (FOOTER) =================
+const backToTopBtn = document.getElementById('backToTop');
+
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' /* Hace que suba deslizándose suavemente */
+        });
+    });
+}
+
+// ================= LÓGICA DEL TRÁILER OFICIAL =================
+const openTrailerBtn = document.getElementById('openTrailerBtn');
+const closeTrailerBtn = document.getElementById('closeTrailerBtn');
+const videoModal = document.getElementById('videoModal');
+const iframeContainer = document.getElementById('iframeContainer');
+
+// URL del tráiler oficial en YouTube (Parámetro autoplay=1 para que inicie solo)
+const trailerUrl = "https://www.youtube.com/embed/uYPbbksJxIg?autoplay=1"; 
+
+if (openTrailerBtn && videoModal) {
+    // Abrir Modal e inyectar video
+    openTrailerBtn.addEventListener('click', () => {
+        iframeContainer.innerHTML = `<iframe src="${trailerUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+        videoModal.classList.add('active');
+        videoModal.setAttribute('aria-hidden', 'false');
+    });
+
+    // Función para cerrar modal y MATAR el video
+    const closeVideoModal = () => {
+        videoModal.classList.remove('active');
+        videoModal.setAttribute('aria-hidden', 'true');
+        // Esperamos a que termine la animación de cierre para borrar el iframe
+        setTimeout(() => { iframeContainer.innerHTML = ''; }, 300);
+    };
+
+    // Eventos de cierre
+    closeTrailerBtn.addEventListener('click', closeVideoModal);
+
+    videoModal.addEventListener('click', (e) => {
+        // Cierra si haces clic en la parte negra de atrás
+        if (e.target === videoModal) closeVideoModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        // Accesibilidad: cierra con la tecla ESC
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    });
+}
