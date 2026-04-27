@@ -5,20 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historia Real | Oppenheimer</title>
     
+    <link rel="icon" href="img/Icono2.webp" type="image/webp">
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     
     <style>
-        .history-container { max-width: 900px; margin: 0 auto; padding: 2rem; background: #0c0c0c; border-left: 4px solid var(--accent-color); }
-        .history-section { margin-bottom: 4rem; }
+        /* ================= ESTILOS DE LA LÍNEA DE TIEMPO ================= */
+        .history-wrapper {
+            padding: 4rem 20px;
+        }
+        
+        .history-container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 2rem 2rem 2rem 3rem; /* Espacio extra a la izquierda para los puntos */
+            background: #0c0c0c; 
+            border-left: 4px solid var(--accent-color); 
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+
+        .history-section { 
+            margin-bottom: 5rem; 
+            position: relative; 
+        }
+
+        /* Nodos/Puntos de la línea de tiempo */
+        .history-section::before {
+            content: '';
+            position: absolute;
+            left: -3.85rem; /* Ajuste matemático para centrar el punto en la línea */
+            top: 5px;
+            width: 24px;
+            height: 24px;
+            background: var(--bg-color);
+            border: 4px solid var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(217, 119, 43, 0.8); /* Brillo radiactivo */
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .history-section:hover::before {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+
         .history-date { font-family: var(--font-title); color: var(--accent-color); font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 0.5rem; }
         .history-heading { font-family: var(--font-title); font-size: 2rem; margin-bottom: 1.5rem; color: #fff; }
         .history-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem; }
         
-        /* Imagen con estilo de foto antigua/desclasificada */
-        .history-img-wrapper { margin: 2rem 0; text-align: center; }
-        .history-img-wrapper img { width: 100%; max-height: 500px; object-fit: cover; filter: grayscale(100%) sepia(20%) contrast(120%); border: 1px solid #333; }
+        .history-img-wrapper { margin: 2rem 0; text-align: center; overflow: hidden; border-radius: 4px; }
+        .history-img-wrapper img { width: 100%; max-height: 500px; object-fit: cover; filter: grayscale(100%) sepia(20%) contrast(120%); transition: var(--transition); }
+        .history-img-wrapper:hover img { filter: grayscale(0%) contrast(100%); transform: scale(1.02); }
         .history-caption { font-size: 0.85rem; font-style: italic; color: #666; margin-top: 10px; }
+
+        /* Estilo especial para la actualidad */
+        .present-day .history-heading { color: #4CAF50; /* Un toque de verde esperanza */ }
+        .present-day .history-date { color: #4CAF50; }
+        .present-day::before { border-color: #4CAF50; box-shadow: 0 0 15px rgba(76, 175, 80, 0.8); }
     </style>
 </head>
 <body>
@@ -29,7 +75,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="sobre.html">La Película</a></li>
-                <li><a href="historia.html" style="color: var(--accent-color);">Historia Real</a></li>
+                <li><a href="historia.html" style="color: var(--accent-color);">Proyecto Manhattan</a></li>
                 <li><a href="galeria.html">Galería</a></li>
                 <li><a href="premios.html">Premios</a></li>
                 <li><a href="barbenheimer.html">Barbenheimer</a></li>
@@ -43,69 +89,137 @@
 
     <main>
         <div class="page-header">
-            <h1 class="page-title">Los Archivos de Los Álamos</h1>
-            <p style="color: var(--text-muted); margin-top: 10px;">Los eventos reales que inspiraron la película.</p>
+            <h1 class="page-title animate-fade-up">Los Archivos Desclasificados</h1>
+            <p style="color: var(--text-muted); margin-top: 10px;">La línea de tiempo de los eventos que cambiaron el mundo.</p>
         </div>
 
-        <section class="history-container animate-fade-up">
-            
-            <article class="history-section">
-                <div class="history-date">1942 - 1946</div>
-                <h2 class="history-heading">El Proyecto Manhattan</h2>
-                <p class="history-text">
-                    El Proyecto Manhattan fue un proyecto de investigación y desarrollo llevado a cabo durante la Segunda Guerra Mundial que produjo las primeras armas nucleares, liderado por los Estados Unidos con el apoyo del Reino Unido y Canadá.
-                </p>
-                <p class="history-text">
-                    El General Leslie R. Groves dirigió el proyecto, mientras que el físico J. Robert Oppenheimer fue el director del Laboratorio de Los Álamos, donde se diseñaron y construyeron las bombas propiamente dichas en absoluto secreto en el desierto de Nuevo México.
-                </p>
+        <div class="history-wrapper">
+            <section class="history-container animate-fade-up" style="animation-delay: 0.2s;">
                 
-                <div class="history-img-wrapper">
-                    <img src="img/LosAlamos.png" alt="Laboratorio de Los Álamos en 1945" onerror="this.src='https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1000&auto=format&fit=crop';">
-                    <p class="history-caption">Vista del complejo secreto en Los Álamos, Nuevo México.</p>
-                </div>
-            </article>
+                <article class="history-section">
+                    <div class="history-date">1942 - 1946</div>
+                    <h2 class="history-heading">El Proyecto Manhattan</h2>
+                    <p class="history-text">
+                        Un proyecto de investigación y desarrollo ultrasecreto llevado a cabo durante la Segunda Guerra Mundial. Ante el temor de que la Alemania nazi estuviera desarrollando armas nucleares, el gobierno de EE.UU. reunió a las mentes más brillantes de la época.
+                    </p>
+                    <p class="history-text">
+                        J. Robert Oppenheimer fue designado como director del Laboratorio de Los Álamos, una instalación construida desde cero en el aislado desierto de Nuevo México, donde se diseñaron los mecanismos de detonación.
+                    </p>
+                    <div class="history-img-wrapper">
+                        <img src="img/LosAlamos.png" alt="Laboratorio de Los Álamos en 1945" onerror="this.src='https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1000&auto=format&fit=crop';">
+                        <p class="history-caption">Vista aérea del complejo secreto en Los Álamos, Nuevo México.</p>
+                    </div>
+                </article>
 
-            <article class="history-section">
-                <div class="history-date">16 de Julio de 1945</div>
-                <h2 class="history-heading">La Prueba Trinity</h2>
-                <p class="history-text">
-                    La culminación de años de teoría y experimentación se materializó en el desierto de Jornada del Muerto. A las 5:29 a.m., se detonó el dispositivo "Gadget", una bomba de plutonio de implosión, marcando la primera explosión nuclear en la historia de la humanidad.
-                </p>
-                <p class="history-text">
-                    Al observar la bola de fuego, Oppenheimer recordó un verso del texto hindú Bhagavad Gita: <em>"Ahora me he convertido en la Muerte, el destructor de mundos"</em>, una cita que definiría su legado moral para siempre.
-                </p>
-            </article>
+                <article class="history-section">
+                    <div class="history-date">16 de Julio de 1945</div>
+                    <h2 class="history-heading">La Prueba Trinity</h2>
+                    <p class="history-text">
+                        A las 5:29 a.m., en el desierto de Jornada del Muerto, se detonó "The Gadget", marcando la primera explosión nuclear de la historia. La bola de fuego iluminó el cielo con una fuerza equivalente a 21 kilotones de TNT.
+                    </p>
+                    <p class="history-text">
+                        Al presenciar el devastador hongo nuclear, Oppenheimer recordó un verso de las escrituras hindúes, el Bhagavad Gita: <em>"Ahora me he convertido en la Muerte, el destructor de mundos."</em>
+                    </p>
+                    <div class="history-img-wrapper">
+                        <img src="img/PTrinity.jpg" alt="La Prueba Trinity" onerror="this.src='https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1000&auto=format&fit=crop';">
+                        <p class="history-caption">La Prueba Trinity en 1945.</p>
+                    </div>
+                </article>
 
-            <article class="history-section">
-                <div class="history-date">1954</div>
-                <h2 class="history-heading">La Caída Política: Las Audiencias de Seguridad</h2>
-                <p class="history-text">
-                    A pesar de ser aclamado como un héroe nacional tras la guerra, la postura vocal de Oppenheimer contra la carrera armamentista (especialmente la bomba de hidrógeno) y sus asociaciones pasadas con personas de izquierda lo convirtieron en un objetivo durante la era McCarthy.
-                </p>
-                <p class="history-text">
-                    En una audiencia de seguridad fuertemente orquestada (impulsada en gran parte por Lewis Strauss), se le revocó su autorización de seguridad, despojándolo de su influencia política y aislándolo de la comunidad científica nuclear que él mismo había ayudado a crear.
-                </p>
-            </article>
+                <article class="history-section">
+                    <div class="history-date">6 y 9 de Agosto de 1945</div>
+                    <h2 class="history-heading">Hiroshima y Nagasaki</h2>
+                    <p class="history-text">
+                        Apenas semanas después de Trinity, Estados Unidos lanzó las bombas atómicas "Little Boy" sobre Hiroshima y "Fat Man" sobre Nagasaki. Las explosiones arrasaron las ciudades instantáneamente, causando la muerte de más de 200,000 personas, en su mayoría civiles.
+                    </p>
+                    <p class="history-text">
+                        Japón se rindió poco después, poniendo fin a la Segunda Guerra Mundial. Sin embargo, la magnitud de la destrucción dejó a Oppenheimer profundamente perturbado, llevándolo a confrontar al presidente Harry S. Truman alegando que sentía "tener sangre en las manos".
+                    </p>
+                    <div class="history-img-wrapper">
+                        <img src="img/Hiro y Naga.webp" alt="Hiroshima y Nagasaki" onerror="this.src='https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1000&auto=format&fit=crop';">
+                        <p class="history-caption">Hiroshima y Nagasaki tras las explosiones nucleares.</p>
+                    </div>
+                </article>
 
-        </section>
+                <article class="history-section">
+                    <div class="history-date">1954</div>
+                    <h2 class="history-heading">La Caída de un Héroe</h2>
+                    <p class="history-text">
+                        Durante el apogeo de la Guerra Fría y la era McCarthy, Oppenheimer se opuso firmemente al desarrollo de la Bomba de Hidrógeno (una "súper bomba" impulsada por Edward Teller), abogando por el control internacional de armas.
+                    </p>
+                    <p class="history-text">
+                        Sus enemigos políticos, liderados por Lewis Strauss, utilizaron sus antiguos vínculos con miembros del Partido Comunista para orquestar una audiencia de seguridad amañada. Oppenheimer fue humillado públicamente y se le revocó su autorización de seguridad, terminando su influencia en el gobierno.
+                    </p>
+                    <div class="history-img-wrapper">
+                        <img src="img/OppiAudiencia.webp" alt="Audiencia de seguridad de Oppenheimer" onerror="this.src='https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1000&auto=format&fit=crop';">
+                        <p class="history-caption">La audiencia de seguridad que llevó a la pérdida de la autorización de Oppenheimer.</p>
+                    </div>
+                </article>
+
+                <article class="history-section">
+                    <div class="history-date">18 de Febrero de 1967</div>
+                    <h2 class="history-heading">El Final de Oppenheimer</h2>
+                    <p class="history-text">
+                        J. Robert Oppenheimer continuó su vida académica como director del Instituto de Estudios Avanzados de Princeton, pero nunca recuperó su antigua posición política. Fumador empedernido durante toda su vida, falleció de cáncer de garganta a los 62 años.
+                    </p>
+                     <div class="history-img-wrapper">
+                        <img src="img/OppiPrincenton.jpg" alt="Oppenheimer en Princeton" onerror="this.src='https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1000&auto=format&fit=crop';">
+                        <p class="history-caption">J. Robert Oppenheimer en el Instituto de Estudios Avanzados de Princeton.</p>
+                    </div>
+                </article>
+
+                <article class="history-section">
+                    <div class="history-date">Diciembre de 2022</div>
+                    <h2 class="history-heading">La Exoneración Histórica</h2>
+                    <p class="history-text">
+                        Casi 70 años después de las audiencias, y meses antes del estreno de la película de Christopher Nolan, el Departamento de Energía de Estados Unidos anuló formalmente la decisión de 1954.
+                    </p>
+                    <p class="history-text">
+                        El gobierno admitió oficialmente que el proceso contra el físico fue "profundamente defectuoso y violó sus propias regulaciones", restaurando de forma póstuma la lealtad y el honor de J. Robert Oppenheimer.
+                    </p>
+                </article>
+
+                <article class="history-section present-day">
+                    <div class="history-date">La Actualidad</div>
+                    <h2 class="history-heading">Hiroshima y Nagasaki Hoy</h2>
+                    <p class="history-text">
+                        A pesar de la devastación nuclear que definió su pasado, tanto Hiroshima como Nagasaki son hoy prósperas metrópolis tecnológicas y culturales. Han resurgido de las cenizas para convertirse en los principales faros de paz del mundo.
+                    </p>
+                    
+                    <div class="modern-gallery animate-fade-up">
+                        <div class="history-img-wrapper modern-img featured">
+                            <img src="img/Parque.jpg" alt="Parque Conmemorativo de la Paz">
+                        </div>
+                        <div class="history-img-wrapper modern-img">
+                            <img src="img/Hiroshima.jpg" alt="Domo de Hiroshima">
+                        </div>
+                        <div class="history-img-wrapper modern-img">
+                            <img src="img/Nagasaki.jpg" alt="Nagasaki moderna">
+                        </div>
+                    </div>
+
+                    <p class="history-caption" style="text-align: center; margin-top: 20px;">
+                        El resurgimiento de Hiroshima y Nagasaki como símbolos globales de paz.
+                    </p>
+                </article>
+
+            </section>
+        </div>
     </main>
 
     <footer>
         <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
-
         <div class="footer-content">
             <div class="footer-logos tech-logos">
-                <img src="img/dolby.png" alt="Dolby Cinema">
+                <img src="img/Dolby.png" alt="Dolby Cinema">
                 <img src="img/imax.png" alt="IMAX">
                 <img src="img/70mm.png" alt="70MM FILM">
             </div>
-
             <div class="footer-logos studio-logos">
                 <img src="img/Syncopy.png" alt="Syncopy">
                 <img src="img/Universal.png" alt="Universal Pictures">
                 <img src="img/rated-r.png" alt="Rated R"> 
             </div>
-
             <ul class="footer-links">
                 <li><a href="#">Ad Choices</a></li>
                 <li class="separator">•</li>
@@ -121,7 +235,6 @@
                 <li class="separator">•</li>
                 <li><a href="#">Feedback</a></li>
             </ul>
-
             <div class="footer-copyright">
                 <p>MOVIE PLATFORM © 2026 POWSTER &copy; 2026 Universal Pictures. ALL RIGHTS RESERVED.</p>
                 <p style="margin-top: 5px; opacity: 0.5;">Proyecto educativo de portafolio web. Sitio no oficial.</p>
