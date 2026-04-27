@@ -3,19 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre la Película | Oppenheimer</title>
+    <title>La Película | Oppenheimer</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/Icono.webp" type="image/webp">
     
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     
     <style>
-        .synopsis { font-size: 1.1rem; max-width: 800px; margin: 0 auto 3rem auto; text-align: center; color: var(--text-muted); }
-        .characters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .character-card { background: #111; padding: 2rem; border-top: 3px solid var(--accent-color); border-radius: 5px; transition: transform 0.3s; }
-        .character-card:hover { transform: translateY(-5px); }
-        .character-name { font-family: var(--font-title); font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .character-actor { color: var(--accent-color); font-weight: bold; margin-bottom: 1rem; font-size: 0.9rem; }
+        /* Sección Sinopsis */
+        .synopsis-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin: 4rem auto 6rem auto;
+        }
+        .synopsis-text { flex: 1; }
+        .synopsis-quote {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1.5rem;
+        }
+        .synopsis-p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
+        .synopsis-image { flex: 1; border-radius: 4px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
+        .synopsis-image img { width: 100%; height: auto; display: block; filter: contrast(110%); }
+
+        /* Tarjetas de Personajes Mejoradas */
+        .characters-title { font-family: var(--font-title); font-size: 2rem; color: #fff; text-align: center; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+        .characters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .character-card { background: #111; border-radius: 4px; overflow: hidden; transition: var(--transition); border-top: 3px solid transparent; }
+        .character-card:hover { transform: translateY(-5px); border-top-color: var(--accent-color); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+        
+        .char-img-wrapper { height: 250px; overflow: hidden; }
+        /* Usamos object-position: top para que no le corte la cabeza a los actores */
+        .char-img-wrapper img { width: 100%; height: 100%; object-fit: cover; object-position: top; filter: grayscale(80%); transition: var(--transition); }
+        .character-card:hover .char-img-wrapper img { filter: grayscale(0%); transform: scale(1.05); }
+        
+        .char-content { padding: 2rem; }
+        .char-name { font-family: var(--font-title); font-size: 1.4rem; color: #fff; margin-bottom: 0.2rem; }
+        .char-actor { color: var(--accent-color); font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+        .char-bio { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+        @media (max-width: 768px) {
+            .synopsis-section { flex-direction: column; gap: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -25,7 +60,8 @@
             <a href="index.html" class="logo">OPPENHEIMER</a>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="sobre.html" style="color: var(--accent-color);">Sobre la Película</a></li>
+                <li><a href="sobre.html" style="color: var(--accent-color);">La Película</a></li>
+                <li><a href="historia.html">Historia Real</a></li>
                 <li><a href="galeria.html">Galería</a></li>
                 <li><a href="premios.html">Premios</a></li>
                 <li><a href="barbenheimer.html">Barbenheimer</a></li>
@@ -39,40 +75,157 @@
 
     <main>
         <div class="page-header">
-            <h1 class="page-title">La Historia y los Hombres</h1>
+            <h1 class="page-title animate-fade-up">Detrás de la Bomba</h1>
         </div>
         
         <section class="container">
-            <p class="synopsis">
-                Escrita y dirigida por Christopher Nolan, Oppenheimer es un épico thriller rodado en IMAX® que transporta al público a la trepidante paradoja de un hombre enigmático que debe arriesgarse a destruir el mundo para poder salvarlo.
-            </p>
+            <div class="synopsis-section animate-fade-up" style="animation-delay: 0.2s;">
+                <div class="synopsis-text">
+                    <div class="synopsis-quote">
+                        "Un thriller épico que transporta al público a la trepidante paradoja de un hombre enigmático."
+                    </div>
+                    <p class="synopsis-p">
+                        Escrita y dirigida por Christopher Nolan, <strong>Oppenheimer</strong> sumerge a la audiencia en la mente del físico teórico J. Robert Oppenheimer, cuyo trabajo fundamental como director del Laboratorio de Los Álamos durante el Proyecto Manhattan alteró el curso de la historia.
+                    </p>
+                    <p class="synopsis-p">
+                        La película explora no solo el asombroso logro científico de la creación de la bomba atómica, sino también las profundas consecuencias morales y políticas que atormentaron a su creador durante la Guerra Fría.
+                    </p>
+                </div>
+                <div class="synopsis-image">
+                    <img src="img/Explocion.jpeg" alt="Póster de Oppenheimer">
+                </div>
+            </div>
 
+            <h2 class="characters-title animate-fade-up" style="animation-delay: 0.4s;">Personajes Principales</h2>
+            
             <div class="characters-grid">
-                <article class="character-card">
-                    <h2 class="character-name">J. Robert Oppenheimer</h2>
-                    <p class="character-actor">Interpretado por: Cillian Murphy</p>
-                    <p>El brillante físico teórico que lideró el Proyecto Manhattan. Su mente concibió el arma que terminaría la guerra, pero su conciencia cargó con el peso del futuro de la humanidad.</p>
+                <article class="character-card animate-fade-up" style="animation-delay: 0.5s;">
+                    <div class="char-img-wrapper">
+                        <img src="img/Cillian.webp" alt="Cillian Murphy" onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400';">
+                    </div>
+                    <div class="char-content">
+                        <h3 class="char-name">J. Robert Oppenheimer</h3>
+                        <p class="char-actor">Interpretado por Cillian Murphy</p>
+                        <p class="char-bio">El brillante físico teórico que lideró el Proyecto Manhattan. Su mente concibió el arma que terminaría la guerra, pero su conciencia cargó con el peso del futuro de la humanidad, llevándolo a cuestionar su propio legado.</p>
+                    </div>
                 </article>
                 
-                <article class="character-card">
-                    <h2 class="character-name">Lewis Strauss</h2>
-                    <p class="character-actor">Interpretado por: Robert Downey Jr.</p>
-                    <p>Miembro fundador de la Comisión de Energía Atómica de EE. UU. Una figura ambiciosa y calculadora cuya relación con Oppenheimer define gran parte de la intriga política post-guerra.</p>
+                <article class="character-card animate-fade-up" style="animation-delay: 0.6s;">
+                    <div class="char-img-wrapper">
+                        <img src="img/Emily.avif" alt="Emily Blunt" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400';">
+                    </div>
+                    <div class="char-content">
+                        <h3 class="char-name">Katherine "Kitty" Oppenheimer</h3>
+                        <p class="char-actor">Interpretada por Emily Blunt</p>
+                        <p class="char-bio">Bióloga, botánica y esposa de Robert. Fue un pilar fundamental (aunque turbulento) en su vida. Su aguda inteligencia y feroz lealtad fueron cruciales durante las agotadoras audiencias de seguridad de la posguerra.</p>
+                    </div>
                 </article>
 
-                <article class="character-card">
-                    <h2 class="character-name">Leslie Groves</h2>
-                    <p class="character-actor">Interpretado por: Matt Damon</p>
-                    <p>El pragmático general del Cuerpo de Ingenieros del Ejército de EE. UU. que dirigió el Proyecto Manhattan, eligiendo a Oppenheimer a pesar de sus afiliaciones políticas pasadas.</p>
+                <article class="character-card animate-fade-up" style="animation-delay: 0.7s;">
+                    <div class="char-img-wrapper">
+                        <img src="img/Robert.jpg" alt="Robert Downey Jr." onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400';">
+                    </div>
+                    <div class="char-content">
+                        <h3 class="char-name">Lewis Strauss</h3>
+                        <p class="char-actor">Interpretado por Robert Downey Jr.</p>
+                        <p class="char-bio">Miembro fundador de la Comisión de Energía Atómica de EE. UU. Una figura ambiciosa y calculadora cuya relación con Oppenheimer define la intriga política post-guerra, motivada por resentimientos personales.</p>
+                    </div>
+                </article>
+
+                <article class="character-card animate-fade-up" style="animation-delay: 0.8s;">
+                    <div class="char-img-wrapper">
+                        <img src="img/Matt.jpg" alt="Matt Damon" onerror="this.src='https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=400';">
+                    </div>
+                    <div class="char-content">
+                        <h3 class="char-name">Leslie Groves</h3>
+                        <p class="char-actor">Interpretado por Matt Damon</p>
+                        <p class="char-bio">El pragmático y exigente general del Ejército de EE. UU. que dirigió todo el Proyecto Manhattan. A pesar de sus inmensas diferencias ideológicas, confió en Oppenheimer para lograr lo imposible en tiempo récord.</p>
+                    </div>
+                </article>
+
+                <article class="character-card animate-fade-up" style="animation-delay: 0.9s;">
+                    <div class="char-img-wrapper">
+                        <img src="img/Florence.avif" alt="Florence Pugh" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400';">
+                    </div>
+                    <div class="char-content">
+                        <h3 class="char-name">Jean Tatlock</h3>
+                        <p class="char-actor">Interpretada por Florence Pugh</p>
+                        <p class="char-bio">Psiquiatra, miembro del Partido Comunista y el gran amor trágico de Oppenheimer. Su relación no solo marcó la vida personal del físico, sino que fue utilizada en su contra durante las investigaciones de seguridad.</p>
+                    </div>
+                </article>
+
+                <article class="character-card animate-fade-up" style="animation-delay: 1.0s;">
+                    <div class="char-img-wrapper">
+                        <img src="img/Tom.jpg" alt="Tom Conti" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400';">
+                    </div>
+                    <div class="char-content">
+                        <h3 class="char-name">Albert Einstein</h3>
+                        <p class="char-actor">Interpretado por Tom Conti</p>
+                        <p class="char-bio">El físico más famoso del siglo XX y mentor espiritual de una generación. Aunque no participó en el Proyecto Manhattan, su presencia es constante como un recordatorio de la responsabilidad ética del científico ante sus descubrimientos.</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <h2 class="characters-title animate-fade-up" style="margin-top: 5rem; animation-delay: 0.2s;">Detrás de Cámara</h2>
+            
+            <div class="production-grid">
+                <article class="prod-card animate-fade-up" style="animation-delay: 0.3s;">
+                    <div class="prod-icon">🎞️</div>
+                    <h3 class="prod-title">Fotografía IMAX 70mm</h3>
+                    <p class="prod-text">Filmada con cámaras IMAX de gran formato por Hoyte van Hoytema. Para representar la visión objetiva de la historia (desde la perspectiva de Strauss), Kodak tuvo que inventar el primer rollo de película IMAX en blanco y negro de la historia.</p>
+                </article>
+
+                <article class="prod-card animate-fade-up" style="animation-delay: 0.4s;">
+                    <div class="prod-icon">💥</div>
+                    <h3 class="prod-title">Cero CGI</h3>
+                    <p class="prod-text">Christopher Nolan y el supervisor de efectos visuales Andrew Jackson tomaron la audaz decisión de recrear la colosal explosión atómica de la Prueba Trinity utilizando exclusivamente efectos prácticos y trucos de cámara, sin gráficos por computadora.</p>
+                </article>
+
+                <article class="prod-card animate-fade-up" style="animation-delay: 0.5s;">
+                    <div class="prod-icon">🎻</div>
+                    <h3 class="prod-title">Banda Sonora Original</h3>
+                    <p class="prod-text">El compositor Ludwig Göransson basó la banda sonora casi en su totalidad en el violín. Este instrumento, capaz de transmitir desde el romanticismo más puro hasta una tensión matemática y neurótica, captura perfectamente la energía cuántica del protagonista.</p>
                 </article>
             </div>
+            
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Proyecto Educativo/Portafolio. Sitio no oficial de la película Oppenheimer.</p>
+        <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+        <div class="footer-content">
+            <div class="footer-logos tech-logos">
+                <img src="img/Dolby.png" alt="Dolby Cinema">
+                <img src="img/imax.png" alt="IMAX">
+                <img src="img/70mm.png" alt="70MM FILM">
+            </div>
+            <div class="footer-logos studio-logos">
+                <img src="img/Syncopy.png" alt="Syncopy">
+                <img src="img/Universal.png" alt="Universal Pictures">
+                <img src="img/rated-r.png" alt="Rated R"> 
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Ad Choices</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Cookie Notice</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Terms of Service</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Filmratings.com</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">MPA.ORG</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Feedback</a></li>
+            </ul>
+            <div class="footer-copyright">
+                <p>MOVIE PLATFORM © 2026 POWSTER &copy; 2026 Universal Pictures. ALL RIGHTS RESERVED.</p>
+                <p style="margin-top: 5px; opacity: 0.5;">Proyecto educativo de portafolio web. Sitio no oficial.</p>
+            </div>
+        </div>
     </footer>
-
     <script src="js/script.js"></script>
 </body>
 </html>

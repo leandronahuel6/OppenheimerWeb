@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia Real | Oppenheimer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .history-container { max-width: 900px; margin: 0 auto; padding: 2rem; background: #0c0c0c; border-left: 4px solid var(--accent-color); }
+        .history-section { margin-bottom: 4rem; }
+        .history-date { font-family: var(--font-title); color: var(--accent-color); font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 0.5rem; }
+        .history-heading { font-family: var(--font-title); font-size: 2rem; margin-bottom: 1.5rem; color: #fff; }
+        .history-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem; }
+        
+        /* Imagen con estilo de foto antigua/desclasificada */
+        .history-img-wrapper { margin: 2rem 0; text-align: center; }
+        .history-img-wrapper img { width: 100%; max-height: 500px; object-fit: cover; filter: grayscale(100%) sepia(20%) contrast(120%); border: 1px solid #333; }
+        .history-caption { font-size: 0.85rem; font-style: italic; color: #666; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo">OPPENHEIMER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre.html">La Película</a></li>
+                <li><a href="historia.html" style="color: var(--accent-color);">Historia Real</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="premios.html">Premios</a></li>
+                <li><a href="barbenheimer.html">Barbenheimer</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1 class="page-title">Los Archivos de Los Álamos</h1>
+            <p style="color: var(--text-muted); margin-top: 10px;">Los eventos reales que inspiraron la película.</p>
+        </div>
+
+        <section class="history-container animate-fade-up">
+            
+            <article class="history-section">
+                <div class="history-date">1942 - 1946</div>
+                <h2 class="history-heading">El Proyecto Manhattan</h2>
+                <p class="history-text">
+                    El Proyecto Manhattan fue un proyecto de investigación y desarrollo llevado a cabo durante la Segunda Guerra Mundial que produjo las primeras armas nucleares, liderado por los Estados Unidos con el apoyo del Reino Unido y Canadá.
+                </p>
+                <p class="history-text">
+                    El General Leslie R. Groves dirigió el proyecto, mientras que el físico J. Robert Oppenheimer fue el director del Laboratorio de Los Álamos, donde se diseñaron y construyeron las bombas propiamente dichas en absoluto secreto en el desierto de Nuevo México.
+                </p>
+                
+                <div class="history-img-wrapper">
+                    <img src="img/LosAlamos.png" alt="Laboratorio de Los Álamos en 1945" onerror="this.src='https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1000&auto=format&fit=crop';">
+                    <p class="history-caption">Vista del complejo secreto en Los Álamos, Nuevo México.</p>
+                </div>
+            </article>
+
+            <article class="history-section">
+                <div class="history-date">16 de Julio de 1945</div>
+                <h2 class="history-heading">La Prueba Trinity</h2>
+                <p class="history-text">
+                    La culminación de años de teoría y experimentación se materializó en el desierto de Jornada del Muerto. A las 5:29 a.m., se detonó el dispositivo "Gadget", una bomba de plutonio de implosión, marcando la primera explosión nuclear en la historia de la humanidad.
+                </p>
+                <p class="history-text">
+                    Al observar la bola de fuego, Oppenheimer recordó un verso del texto hindú Bhagavad Gita: <em>"Ahora me he convertido en la Muerte, el destructor de mundos"</em>, una cita que definiría su legado moral para siempre.
+                </p>
+            </article>
+
+            <article class="history-section">
+                <div class="history-date">1954</div>
+                <h2 class="history-heading">La Caída Política: Las Audiencias de Seguridad</h2>
+                <p class="history-text">
+                    A pesar de ser aclamado como un héroe nacional tras la guerra, la postura vocal de Oppenheimer contra la carrera armamentista (especialmente la bomba de hidrógeno) y sus asociaciones pasadas con personas de izquierda lo convirtieron en un objetivo durante la era McCarthy.
+                </p>
+                <p class="history-text">
+                    En una audiencia de seguridad fuertemente orquestada (impulsada en gran parte por Lewis Strauss), se le revocó su autorización de seguridad, despojándolo de su influencia política y aislándolo de la comunidad científica nuclear que él mismo había ayudado a crear.
+                </p>
+            </article>
+
+        </section>
+    </main>
+
+    <footer>
+        <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+        <div class="footer-content">
+            <div class="footer-logos tech-logos">
+                <img src="img/dolby.png" alt="Dolby Cinema">
+                <img src="img/imax.png" alt="IMAX">
+                <img src="img/70mm.png" alt="70MM FILM">
+            </div>
+
+            <div class="footer-logos studio-logos">
+                <img src="img/Syncopy.png" alt="Syncopy">
+                <img src="img/Universal.png" alt="Universal Pictures">
+                <img src="img/rated-r.png" alt="Rated R"> 
+            </div>
+
+            <ul class="footer-links">
+                <li><a href="#">Ad Choices</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Cookie Notice</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Terms of Service</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Filmratings.com</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">MPA.ORG</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Feedback</a></li>
+            </ul>
+
+            <div class="footer-copyright">
+                <p>MOVIE PLATFORM © 2026 POWSTER &copy; 2026 Universal Pictures. ALL RIGHTS RESERVED.</p>
+                <p style="margin-top: 5px; opacity: 0.5;">Proyecto educativo de portafolio web. Sitio no oficial.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
