@@ -310,20 +310,30 @@ footer {
     visibility: visible;
 }
 .lightbox-content {
-    max-width: 90%;
-    max-height: 90vh;
+    /* Convertimos el contenedor en Flexbox para apilar imagen y texto correctamente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90vw; /* Usa ancho relativo a la pantalla */
+    max-height: 90vh; /* Usa alto relativo a la pantalla */
     transform: scale(0.9);
     transition: transform 0.3s ease;
 }
+
 .lightbox.active .lightbox-content {
     transform: scale(1);
 }
+
 .lightbox-content img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    max-width: 100%;
+    /* LA MAGIA: Limitamos la foto al 80% del alto de la pantalla para dejar espacio al texto */
+    max-height: 80vh; 
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Garantiza que la foto NUNCA se corte */
     box-shadow: 0 10px 40px rgba(0,0,0,0.8);
     border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
 }
 .lightbox-close {
     position: absolute;
@@ -1000,5 +1010,37 @@ footer {
     }
     100% {
         box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* ================= NAVEGACIÓN DEL LIGHTBOX ================= */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 2002;
+    border-radius: 5px;
+}
+
+.lightbox-nav:hover {
+    background: var(--accent-color);
+    color: black;
+}
+
+.lightbox-nav.prev { left: 20px; }
+.lightbox-nav.next { right: 20px; }
+
+/* Ocultar botones en móviles muy pequeños si estorban */
+@media (max-width: 480px) {
+    .lightbox-nav {
+        padding: 0.5rem;
+        font-size: 1.5rem;
     }
 }

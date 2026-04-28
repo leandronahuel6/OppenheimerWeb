@@ -5,16 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería | Oppenheimer</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/Icono2.webp" type="image/webp">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     
     <style>
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); grid-auto-rows: 250px; gap: 15px; }
-        .gallery-item { background-color: #222; overflow: hidden; border-radius: 4px; position: relative; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: grayscale(50%); }
-        .gallery-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
-        .item-large { grid-column: span 2; grid-row: span 2; }
-        @media (max-width: 600px) { .item-large { grid-column: span 1; grid-row: span 1; } }
+        /* ================= ESTILOS ESPECÍFICOS DE LA GALERÍA (MASONRY) ================= */
+        .gallery-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            /* Aquí está la magia del Masonry puro en CSS */
+            columns: 3;
+            column-gap: 1.5rem;
+        }
+
+        @media (max-width: 1000px) { .gallery-wrapper { columns: 2; } }
+        @media (max-width: 600px) { .gallery-wrapper { columns: 1; } }
+
+        .gallery-item {
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            /* Evita que una imagen se parta entre dos columnas */
+            break-inside: avoid;
+            background: #111;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+            filter: brightness(0.8) contrast(1.1); /* Un poco apagadas por defecto */
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1) contrast(1); /* Se iluminan al pasar el mouse */
+        }
     </style>
 </head>
 <body>
@@ -24,7 +55,8 @@
             <a href="index.html" class="logo">OPPENHEIMER</a>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="sobre.html">Sobre la Película</a></li>
+                <li><a href="sobre.html">La Película</a></li>
+                <li><a href="historia.html">Proyecto Manhattan</a></li>
                 <li><a href="galeria.html" style="color: var(--accent-color);">Galería</a></li>
                 <li><a href="premios.html">Premios</a></li>
                 <li><a href="barbenheimer.html">Barbenheimer</a></li>
@@ -38,42 +70,120 @@
 
     <main>
         <div class="page-header">
-            <h1 class="page-title">Visión Visual</h1>
+            <h1 class="page-title animate-fade-up">Capturas Clasificadas</h1>
+            <p style="color: var(--text-muted); margin-top: 10px;">Una mirada visual a la obra de Christopher Nolan.</p>
         </div>
-        
-        <section class="container gallery-grid">
-    <div class="gallery-item item-large" tabindex="0" role="button" aria-label="Ver imagen de Prueba Trinity" data-src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?q=80&w=1000&auto=format&fit=crop">
-        <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?q=80&w=600&auto=format&fit=crop" alt="Prueba Trinity">
-        <div class="overlay"><span>Ampliar</span></div>
-    </div>
-    <div class="gallery-item" tabindex="0" role="button" aria-label="Ver imagen de Átomo" data-src="https://images.unsplash.com/photo-1614728263694-6101c5a98bf6?q=80&w=1000&auto=format&fit=crop">
-        <img src="https://images.unsplash.com/photo-1614728263694-6101c5a98bf6?q=80&w=600&auto=format&fit=crop" alt="Átomo">
-        <div class="overlay"><span>Ampliar</span></div>
-    </div>
-    <div class="gallery-item" tabindex="0" role="button" aria-label="Ver imagen de Pizarra Científica" data-src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop">
-        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop" alt="Pizarra Científica">
-        <div class="overlay"><span>Ampliar</span></div>
-    </div>
-    <div class="gallery-item" tabindex="0" role="button" aria-label="Ver imagen de Desierto" data-src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1000&auto=format&fit=crop">
-        <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=600&auto=format&fit=crop" alt="Desierto Los Alamos">
-        <div class="overlay"><span>Ampliar</span></div>
-    </div>
-    <div class="gallery-item" tabindex="0" role="button" aria-label="Ver imagen de Explosión" data-src="https://images.unsplash.com/photo-1555626906-fcf10d6851b4?q=80&w=1000&auto=format&fit=crop">
-        <img src="https://images.unsplash.com/photo-1555626906-fcf10d6851b4?q=80&w=600&auto=format&fit=crop" alt="Explosión">
-        <div class="overlay"><span>Ampliar</span></div>
-    </div>
-</section>
 
-<div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox-close" aria-label="Cerrar imagen">&times;</button>
-    <div class="lightbox-content">
-        <img id="lightbox-img" src="" alt="Imagen ampliada">
-    </div>
-</div>
+        <section class="gallery-wrapper animate-fade-up" style="animation-delay: 0.2s;">
+            
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/OppiObservando.jpg" alt="Oppenheimer observando la prueba Trinity" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/Foto2.webp" alt="Detrás de cámara con Christopher Nolan" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/Foto3.avif" alt="Cillian Murphy como J. Robert Oppenheimer" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/Foto4.jpg" alt="Lewis Strauss en las audiencias" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/Foto5.jpg" alt="El equipo del Proyecto Manhattan" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/Foto6.jpg" alt="Explosión Trinity" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/Foto7.avif" alt="Poster promocional" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/Foto8.jpeg" alt="Oppenheimer y Einstein" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/Foto9.webp" alt="Oppenheimer gana el oscar a mejor película" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/Foto10.avif" alt="Oppenheimer se recibe la noticia de que la ha caido con exito" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/foto11.jpg" alt="Ensamblaje de Gadget (la primera bomba atómica)" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+            <div class="gallery-item" tabindex="0">
+                <img src="img/galeria/foto12.webp" alt="Matt Damon como Leslie Groves" class="lightbox-trigger" loading="lazy">
+                <div class="overlay"><span>Ampliar</span></div>
+            </div>
+
+        </section>
     </main>
 
+    <div class="lightbox" id="imageLightbox" aria-hidden="true">
+        <button class="lightbox-close" id="closeLightboxBtn" aria-label="Cerrar imagen">&times;</button>
+        
+        <button class="lightbox-nav prev" id="prevBtn" aria-label="Imagen anterior">&#10094;</button>
+        <button class="lightbox-nav next" id="nextBtn" aria-label="Siguiente imagen">&#10095;</button>
+
+        <div class="lightbox-content">
+            <img src="" alt="Imagen ampliada" id="lightboxImg">
+            <p id="lightboxCaption" style="color: white; text-align: center; margin-top: 10px; font-family: var(--font-body);"></p>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 Proyecto Educativo/Portafolio. Sitio no oficial de la película Oppenheimer.</p>
+        <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+        <div class="footer-content">
+            <div class="footer-logos tech-logos">
+                <img src="img/Dolby.png" alt="Dolby Cinema">
+                <img src="img/imax.png" alt="IMAX">
+                <img src="img/70mm.png" alt="70MM FILM">
+            </div>
+            <div class="footer-logos studio-logos">
+                <img src="img/Syncopy.png" alt="Syncopy">
+                <img src="img/Universal.png" alt="Universal Pictures">
+                <img src="img/rated-r.png" alt="Rated R"> 
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Ad Choices</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Cookie Notice</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Terms of Service</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Filmratings.com</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">MPA.ORG</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Feedback</a></li>
+            </ul>
+            <div class="footer-copyright">
+                <p>MOVIE PLATFORM © 2026 POWSTER &copy; 2026 Universal Pictures. ALL RIGHTS RESERVED.</p>
+                <p style="margin-top: 5px; opacity: 0.5;">Proyecto educativo de portafolio web. Sitio no oficial.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="js/script.js"></script>

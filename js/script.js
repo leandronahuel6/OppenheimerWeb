@@ -2,89 +2,26 @@
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
-// Verifica que los elementos existan antes de añadir el evento
 if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
-        // Activa/desactiva el menú lateral
         navLinks.classList.toggle('active');
-        // Activa/desactiva la animación de la 'X' en el botón
         hamburger.classList.toggle('active');
     });
 }
 
 // ================= LÓGICA DEL TEMPORIZADOR CINEMÁTICO =================
-// Simula el tiempo corriendo, ideal para la página de inicio
 const timerElement = document.getElementById('timer');
 
 if (timerElement) {
     setInterval(() => {
         const now = new Date();
-        // Formateamos los números para que siempre tengan 2 dígitos
         const ms = String(Math.floor(now.getMilliseconds() / 10)).padStart(2, '0');
         const s = String(now.getSeconds()).padStart(2, '0');
         const m = String(now.getMinutes()).padStart(2, '0');
         const h = String(now.getHours()).padStart(2, '0');
         
-        // Actualizamos el texto en pantalla
         timerElement.innerText = `T- ${h}:${m}:${s}:${ms}`;
-    }, 50); // Se actualiza cada 50 milisegundos para dar ese efecto de película
-}
-
-// ================= LÓGICA DEL LIGHTBOX (GALERÍA) =================
-const galleryItems = document.querySelectorAll('.gallery-item');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const closeBtn = document.querySelector('.lightbox-close');
-
-if (lightbox) {
-    // Función para abrir el lightbox
-    const openLightbox = (item) => {
-        // Obtenemos la URL de alta calidad del data-attribute
-        const highResUrl = item.getAttribute('data-src'); 
-        lightboxImg.src = highResUrl;
-        lightbox.classList.add('active');
-        lightbox.setAttribute('aria-hidden', 'false');
-        // Enfocamos el botón de cerrar por accesibilidad
-        closeBtn.focus();
-    };
-
-    // Función para cerrar el lightbox
-    const closeLightbox = () => {
-        lightbox.classList.remove('active');
-        lightbox.setAttribute('aria-hidden', 'true');
-        // Limpiamos el src tras la animación para evitar saltos visuales al abrir otra imagen
-        setTimeout(() => { lightboxImg.src = ''; }, 300);
-    };
-
-    // Event listeners para abrir (Clic y Teclado)
-    galleryItems.forEach(item => {
-        item.addEventListener('click', () => openLightbox(item));
-        
-        // Accesibilidad: Permitir abrir con 'Enter' o 'Espacio'
-        item.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openLightbox(item);
-            }
-        });
-    });
-
-    // Event listeners para cerrar (Botón, fondo oscuro y Teclado)
-    closeBtn.addEventListener('click', closeLightbox);
-    
-    lightbox.addEventListener('click', (e) => {
-        // Cerrar solo si se hace clic en el fondo oscuro, no en la imagen
-        if (e.target === lightbox) {
-            closeLightbox();
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        // Cerrar con la tecla 'Escape'
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
-        }
-    });
+    }, 50); 
 }
 
 // ================= LÓGICA DEL BOTÓN "VOLVER ARRIBA" (FOOTER) =================
@@ -92,10 +29,7 @@ const backToTopBtn = document.getElementById('backToTop');
 
 if (backToTopBtn) {
     backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth' /* Hace que suba deslizándose suavemente */
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
@@ -105,37 +39,110 @@ const closeTrailerBtn = document.getElementById('closeTrailerBtn');
 const videoModal = document.getElementById('videoModal');
 const iframeContainer = document.getElementById('iframeContainer');
 
-// URL del tráiler oficial en YouTube (Parámetro autoplay=1 para que inicie solo)
 const trailerUrl = "https://www.youtube.com/embed/uYPbbksJxIg?autoplay=1"; 
 
 if (openTrailerBtn && videoModal) {
-    // Abrir Modal e inyectar video
     openTrailerBtn.addEventListener('click', () => {
         iframeContainer.innerHTML = `<iframe src="${trailerUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
         videoModal.classList.add('active');
         videoModal.setAttribute('aria-hidden', 'false');
     });
 
-    // Función para cerrar modal y MATAR el video
     const closeVideoModal = () => {
         videoModal.classList.remove('active');
         videoModal.setAttribute('aria-hidden', 'true');
-        // Esperamos a que termine la animación de cierre para borrar el iframe
         setTimeout(() => { iframeContainer.innerHTML = ''; }, 300);
     };
 
-    // Eventos de cierre
     closeTrailerBtn.addEventListener('click', closeVideoModal);
 
     videoModal.addEventListener('click', (e) => {
-        // Cierra si haces clic en la parte negra de atrás
         if (e.target === videoModal) closeVideoModal();
     });
 
     document.addEventListener('keydown', (e) => {
-        // Accesibilidad: cierra con la tecla ESC
         if (e.key === 'Escape' && videoModal.classList.contains('active')) {
             closeVideoModal();
         }
+    });
+}
+
+// ================= LÓGICA DE GALERÍA LIGHTBOX (NUEVA) =================
+const lightbox = document.getElementById('imageLightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCaption = document.getElementById('lightboxCaption');
+// CAMBIO CLAVE: Ahora seleccionamos el contenedor completo, no solo la imagen
+const galleryItems = document.querySelectorAll('.gallery-item'); 
+const closeBtn = document.getElementById('closeLightboxBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+// Solo ejecutamos esto si estamos en la página de galería
+if (lightbox && galleryItems.length > 0) {
+    let currentIndex = 0;
+
+    const openLightbox = (index) => {
+        currentIndex = index;
+        // Buscamos la imagen que está DENTRO del item al que le hicimos clic
+        const selectedImg = galleryItems[currentIndex].querySelector('img');
+        
+        lightboxImg.src = selectedImg.src;
+        lightboxCaption.textContent = selectedImg.alt; 
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; 
+    };
+
+    const navigate = (direction) => {
+        currentIndex += direction;
+        
+        if (currentIndex >= galleryItems.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = galleryItems.length - 1;
+        
+        lightboxImg.style.opacity = '0';
+        setTimeout(() => {
+            // Buscamos la nueva imagen
+            const img = galleryItems[currentIndex].querySelector('img');
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = img.alt;
+            lightboxImg.style.opacity = '1';
+        }, 150);
+    };
+
+    // Añadimos el evento de clic al contenedor entero
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => openLightbox(index));
+        
+        // ¡Extra! Accesibilidad: poder abrir fotos con la tecla Enter
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') openLightbox(index);
+        });
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); 
+        navigate(-1);
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigate(1);
+    });
+
+    const closeLightboxGallery = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    };
+
+    closeBtn.addEventListener('click', closeLightboxGallery);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightboxGallery();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'ArrowRight') navigate(1);
+        if (e.key === 'ArrowLeft') navigate(-1);
+        if (e.key === 'Escape') closeLightboxGallery();
     });
 }
