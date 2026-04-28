@@ -9,163 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Special+Elite&family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     
-    <style>
-        :root {
-            --paper-color: #e0d8c3; /* Color papel viejo */
-            --ink-color: #222;
-            --stamp-red: #8b0000;
-        }
-
-        body { background: #0a0a0a; }
-
-        .contact-container {
-            max-width: 900px;
-            margin: 80px auto 60px auto;
-            padding: 4rem 2rem;
-            position: relative;
-            /* Imagen de mesa de madera oscura para dar realismo */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('img/escritorio.webp');
-            background-size: cover;
-            background-position: center;
-            border-radius: 4px;
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
-        }
-
-        /* ================= DISEÑO DEL FORMULARIO (EXPEDIENTE) ================= */
-        .security-form {
-            background-color: var(--paper-color);
-            padding: 4rem;
-            color: var(--ink-color);
-            font-family: 'Special Elite', cursive; /* Fuente de máquina de escribir */
-            box-shadow: 20px 20px 0px rgba(0,0,0,0.5);
-            position: relative;
-            background-image: radial-gradient(#d4cbb3 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
-        /* Sello de Clasificado */
-        .stamp {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            border: 4px solid var(--stamp-red);
-            color: var(--stamp-red);
-            padding: 10px 20px;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 2rem;
-            text-transform: uppercase;
-            transform: rotate(15deg);
-            opacity: 0.8;
-            user-select: none;
-            border-radius: 4px;
-        }
-
-        .form-header {
-            border-bottom: 2px solid var(--ink-color);
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-        }
-
-        .form-header h1 { font-size: 1.8rem; margin: 0; }
-        .form-header p { font-size: 0.9rem; margin: 5px 0 0 0; }
-
-        .input-group {
-            margin-bottom: 2rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .input-group label {
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 0.8rem;
-            margin-bottom: 5px;
-        }
-
-        .input-group input, 
-        .input-group textarea, 
-        .input-group select {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #888;
-            padding: 10px 5px;
-            font-family: 'Special Elite', cursive;
-            font-size: 1.1rem;
-            color: var(--ink-color);
-            outline: none;
-        }
-
-        .input-group input:focus, 
-        .input-group textarea:focus {
-            border-bottom: 2px solid var(--ink-color);
-        }
-
-        /* Botón de envío como sello de aprobación */
-        .submit-btn {
-            background: var(--ink-color);
-            color: var(--paper-color);
-            border: none;
-            padding: 15px 40px;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 2rem;
-        }
-
-        .submit-btn:hover {
-            background: var(--stamp-red);
-            transform: scale(1.02);
-        }
-
-        /* Decoración de clips o grapas */
-        .staple {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 15px;
-            background: #999;
-            border-radius: 5px;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
-        }
-
-        @media (max-width: 600px) {
-            .security-form { padding: 2rem; }
-            .stamp { position: relative; top: 0; right: 0; display: inline-block; margin-bottom: 1rem; }
-        }
-
-        /* ================= ANIMACIÓN DE SELLO "AUTHORIZED" ================= */
-        .success-stamp {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            /* Empieza gigante (scale 4) y transparente */
-            transform: translate(-50%, -50%) scale(4) rotate(-10deg);
-            font-family: 'Bebas Neue', cursive;
-            font-size: 6rem;
-            color: #1b5e20; /* Verde oscuro estilo tinta */
-            border: 8px solid #1b5e20;
-            padding: 10px 40px;
-            border-radius: 8px;
-            opacity: 0;
-            pointer-events: none; /* Para que no bloquee los clics */
-            z-index: 1000;
-            /* La magia del rebote (cubic-bezier) al estampar */
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* La clase que añadiremos con JavaScript para mostrarlo */
-        .success-stamp.show {
-            transform: translate(-50%, -50%) scale(1) rotate(-10deg);
-            opacity: 0.9;
-        }
-
-    </style>
 </head>
 <body>
 
@@ -228,42 +71,47 @@
         </form>
     </main>
 
-    <footer>
-        <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
-        <div class="footer-content">
-            <div class="footer-logos tech-logos">
-                <img src="img/Dolby.png" alt="Dolby Cinema">
-                <img src="img/imax.png" alt="IMAX">
-                <img src="img/70mm.png" alt="70MM FILM">
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+    <footer class="hollywood-footer">
+        <div class="footer-inner">
+            
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/universalpictures/" target="_blank">FACEBOOK</a>
+                <a href="https://www.instagram.com/universalpictures/" target="_blank">INSTAGRAM</a>
+                <a href="https://twitter.com/UniversalPics" target="_blank">X (TWITTER)</a>
+                <a href="https://www.youtube.com/user/universalpictures" target="_blank">YOUTUBE</a>
+                <a href="https://www.tiktok.com/@universalpics" target="_blank">TIKTOK</a>
             </div>
-            <div class="footer-logos studio-logos">
-                <img src="img/Syncopy.png" alt="Syncopy">
-                <img src="img/Universal.png" alt="Universal Pictures">
-                <img src="img/rated-r.png" alt="Rated R"> 
+
+            <div class="billing-row tech-row">
+                <img src="img/dolby2.png" alt="Dolby" class="footer-img">
+                <img src="img/imax.png" alt="IMAX" class="footer-img">
+                <img src="img/70mm2.png" alt="70MM" class="footer-img">
             </div>
-            <ul class="footer-links">
-                <li><a href="#">Ad Choices</a></li>
-                <li class="separator">•</li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li class="separator">•</li>
-                <li><a href="#">Cookie Notice</a></li>
-                <li class="separator">•</li>
-                <li><a href="#">Terms of Service</a></li>
-                <li class="separator">•</li>
-                <li><a href="#">Filmratings.com</a></li>
-                <li class="separator">•</li>
-                <li><a href="#">MPA.ORG</a></li>
-                <li class="separator">•</li>
-                <li><a href="#">Feedback</a></li>
-            </ul>
-            <div class="footer-copyright">
-                <p>MOVIE PLATFORM © 2026 POWSTER &copy; 2026 Universal Pictures. ALL RIGHTS RESERVED.</p>
-                <p style="margin-top: 5px; opacity: 0.5;">Proyecto educativo de portafolio web. Sitio no oficial.</p>
-                <p style="margin-top: 5px; color: var(--accent-color); font-size: 0.6rem; letter-spacing: 2px;">SECURITY CLEARANCE REQUIRED</p>
+
+            <div class="billing-row studio-row">
+                <img src="img/Syncopy.png" alt="Syncopy" class="footer-img">
+                <img src="img/Universal.png" alt="Universal" class="footer-img">
+                <img src="img/rated-r.png" alt="Rated R" class="footer-img">
+            </div>
+
+            <nav class="footer-legal-nav">
+                <a href="#">POLÍTICA DE PRIVACIDAD</a>
+                <span class="dot">•</span>
+                <a href="#">TÉRMINOS Y CONDICIONES</a>
+                <span class="dot">•</span>
+                <a href="#">OPCIONES DE PUBLICIDAD</a>
+                <span class="dot">•</span>
+                <a href="#">CONFIGURACIÓN DE COOKIES</a>
+            </nav>
+
+            <div class="footer-copyright-block">
+                <p class="main-copy">© 2026 UNIVERSAL STUDIOS. ALL RIGHTS RESERVED.</p>
+                <p class="disclaimer">PROYECTO EDUCATIVO DE PORTAFOLIO. NO AFILIADO CON UNIVERSAL PICTURES.</p>
             </div>
         </div>
     </footer>
-
     <script src="js/script.js"></script>
 </body>
 </html>

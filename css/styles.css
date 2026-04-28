@@ -1267,3 +1267,746 @@ img[alt="Dolby"]:hover, img[alt="70MM"]:hover {
         margin-bottom: 10px;
     }
 }
+
+/* ================= PÁGINA: SOBRE (La Película) ================= */
+ 
+/* Sección Sinopsis */
+.synopsis-section {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin: 4rem auto 6rem auto;
+}
+.synopsis-text { flex: 1; }
+.synopsis-quote {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1.5rem;
+}
+.synopsis-p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
+.synopsis-image { flex: 1; border-radius: 4px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
+.synopsis-image img { width: 100%; height: auto; display: block; filter: contrast(110%); }
+ 
+/* Tarjetas de Personajes */
+.characters-title { font-family: var(--font-title); font-size: 2rem; color: #fff; text-align: center; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+.characters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+.character-card { background: #111; border-radius: 4px; overflow: hidden; transition: var(--transition); border-top: 3px solid transparent; }
+.character-card:hover { transform: translateY(-5px); border-top-color: var(--accent-color); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+ 
+.char-img-wrapper { height: 250px; overflow: hidden; }
+.char-img-wrapper img { width: 100%; height: 100%; object-fit: cover; object-position: top; filter: grayscale(80%); transition: var(--transition); }
+.character-card:hover .char-img-wrapper img { filter: grayscale(0%); transform: scale(1.05); }
+ 
+.char-content { padding: 2rem; }
+.char-name { font-family: var(--font-title); font-size: 1.4rem; color: #fff; margin-bottom: 0.2rem; }
+.char-actor { color: var(--accent-color); font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+.char-bio { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+ 
+@media (max-width: 768px) {
+    .synopsis-section { flex-direction: column; gap: 2rem; }
+}
+
+        /* ================= ESTILOS ESPECÍFICOS DE LA GALERÍA (MASONRY) ================= */
+        .gallery-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            /* Aquí está la magia del Masonry puro en CSS */
+            columns: 3;
+            column-gap: 1.5rem;
+        }
+
+        @media (max-width: 1000px) { .gallery-wrapper { columns: 2; } }
+        @media (max-width: 600px) { .gallery-wrapper { columns: 1; } }
+
+        .gallery-item {
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            /* Evita que una imagen se parta entre dos columnas */
+            break-inside: avoid;
+            background: #111;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+            filter: brightness(0.8) contrast(1.1); /* Un poco apagadas por defecto */
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1) contrast(1); /* Se iluminan al pasar el mouse */
+        }
+
+/* ================= ESTILOS DE LA SECCIÓN DE CONTACTO ================= */
+        :root {
+            --paper-color: #e0d8c3; /* Color papel viejo */
+            --ink-color: #222;
+            --stamp-red: #8b0000;
+        }
+
+        body { background: #0a0a0a; }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 80px auto 60px auto;
+            padding: 4rem 2rem;
+            position: relative;
+            /* Imagen de mesa de madera oscura para dar realismo */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('img/escritorio.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
+        }
+
+        /* ================= DISEÑO DEL FORMULARIO (EXPEDIENTE) ================= */
+        .security-form {
+            background-color: var(--paper-color);
+            padding: 4rem;
+            color: var(--ink-color);
+            font-family: 'Special Elite', cursive; /* Fuente de máquina de escribir */
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.5);
+            position: relative;
+            background-image: radial-gradient(#d4cbb3 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Sello de Clasificado */
+        .stamp {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            border: 4px solid var(--stamp-red);
+            color: var(--stamp-red);
+            padding: 10px 20px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            text-transform: uppercase;
+            transform: rotate(15deg);
+            opacity: 0.8;
+            user-select: none;
+            border-radius: 4px;
+        }
+
+        .form-header {
+            border-bottom: 2px solid var(--ink-color);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        .form-header h1 { font-size: 1.8rem; margin: 0; }
+        .form-header p { font-size: 0.9rem; margin: 5px 0 0 0; }
+
+        .input-group {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .input-group input, 
+        .input-group textarea, 
+        .input-group select {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #888;
+            padding: 10px 5px;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.1rem;
+            color: var(--ink-color);
+            outline: none;
+        }
+
+        .input-group input:focus, 
+        .input-group textarea:focus {
+            border-bottom: 2px solid var(--ink-color);
+        }
+
+        /* Botón de envío como sello de aprobación */
+        .submit-btn {
+            background: var(--ink-color);
+            color: var(--paper-color);
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--stamp-red);
+            transform: scale(1.02);
+        }
+
+        /* Decoración de clips o grapas */
+        .staple {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 15px;
+            background: #999;
+            border-radius: 5px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 600px) {
+            .security-form { padding: 2rem; }
+            .stamp { position: relative; top: 0; right: 0; display: inline-block; margin-bottom: 1rem; }
+        }
+
+        /* ================= ANIMACIÓN DE SELLO "AUTHORIZED" ================= */
+        :root {
+            --paper-color: #e0d8c3; /* Color papel viejo */
+            --ink-color: #222;
+            --stamp-red: #8b0000;
+        }
+
+        body { background: #0a0a0a; }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 80px auto 60px auto;
+            padding: 4rem 2rem;
+            position: relative;
+            /* Imagen de mesa de madera oscura para dar realismo */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('img/escritorio.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
+        }
+
+        /* ================= DISEÑO DEL FORMULARIO (EXPEDIENTE) ================= */
+        .security-form {
+            background-color: var(--paper-color);
+            padding: 4rem;
+            color: var(--ink-color);
+            font-family: 'Special Elite', cursive; /* Fuente de máquina de escribir */
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.5);
+            position: relative;
+            background-image: radial-gradient(#d4cbb3 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Sello de Clasificado */
+        .stamp {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            border: 4px solid var(--stamp-red);
+            color: var(--stamp-red);
+            padding: 10px 20px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            text-transform: uppercase;
+            transform: rotate(15deg);
+            opacity: 0.8;
+            user-select: none;
+            border-radius: 4px;
+        }
+
+        .form-header {
+            border-bottom: 2px solid var(--ink-color);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        .form-header h1 { font-size: 1.8rem; margin: 0; }
+        .form-header p { font-size: 0.9rem; margin: 5px 0 0 0; }
+
+        .input-group {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .input-group input, 
+        .input-group textarea, 
+        .input-group select {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #888;
+            padding: 10px 5px;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.1rem;
+            color: var(--ink-color);
+            outline: none;
+        }
+
+        .input-group input:focus, 
+        .input-group textarea:focus {
+            border-bottom: 2px solid var(--ink-color);
+        }
+
+        /* Botón de envío como sello de aprobación */
+        .submit-btn {
+            background: var(--ink-color);
+            color: var(--paper-color);
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--stamp-red);
+            transform: scale(1.02);
+        }
+
+        /* Decoración de clips o grapas */
+        .staple {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 15px;
+            background: #999;
+            border-radius: 5px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 600px) {
+            .security-form { padding: 2rem; }
+            .stamp { position: relative; top: 0; right: 0; display: inline-block; margin-bottom: 1rem; }
+        }
+
+        /* ================= ANIMACIÓN DE SELLO "AUTHORIZED" ================= */
+        .success-stamp {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* Empieza gigante (scale 4) y transparente */
+            transform: translate(-50%, -50%) scale(4) rotate(-10deg);
+            font-family: 'Bebas Neue', cursive;
+            font-size: 6rem;
+            color: #1b5e20; /* Verde oscuro estilo tinta */
+            border: 8px solid #1b5e20;
+            padding: 10px 40px;
+            border-radius: 8px;
+            opacity: 0;
+            pointer-events: none; /* Para que no bloquee los clics */
+            z-index: 1000;
+            /* La magia del rebote (cubic-bezier) al estampar */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* La clase que añadiremos con JavaScript para mostrarlo */
+        .success-stamp.show {
+            transform: translate(-50%, -50%) scale(1) rotate(-10deg);
+            opacity: 0.9;
+        }
+
+/*================= ESTILOS DE LA SECCIÓN DE BARBENHEIMER =================*/
+        :root {
+            --barbie-pink: #ff0095;
+            --oppie-orange: #ff4500;
+        }
+
+        body { background: #050505; color: #fff; }
+
+        /* ================= HERO EDITORIAL (Fondo fijo) ================= */
+        .bh-hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Usa la imagen que subiste, asegúrate de guardarla en la carpeta img/ */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(5,5,5,1)), url('img/Barbenheimer.jpg') center/cover fixed;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        /* ================= EFECTO GLITCH EN EL TÍTULO ================= */
+/* Estilo del título con fuente de Barbie */
+.glitch-title {
+    font-family: 'Pacifico', cursive; /* Cambiamos a la fuente de Barbie */
+    font-size: clamp(3.5rem, 10vw, 8rem); /* Tamaño ajustado para cursiva */
+    color: #fff;
+    position: relative;
+    letter-spacing: 2px; /* Menor espaciado para que las letras se conecten */
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+    transform: rotate(-3deg); /* Inclinación juguetona */
+    text-transform: none; /* Importante: Barbie no usa solo mayúsculas */
+}
+
+/* Capas de color para el efecto Glitch */
+.glitch-title::before, .glitch-title::after {
+    content: "Barbenheimer"; /* Debe coincidir exactamente con el HTML */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch-title::before {
+    color: var(--barbie-pink);
+    z-index: -1;
+    left: 4px;
+    animation: glitch-anim-1 3s infinite linear alternate-reverse;
+}
+
+.glitch-title::after {
+    color: var(--oppie-orange);
+    z-index: -2;
+    left: -4px;
+    animation: glitch-anim-2 4s infinite linear alternate-reverse;
+}
+
+        /* (Las animaciones @keyframes glitch-left y glitch-right déjalas igual) */
+
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
+            20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
+            40% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); }
+            60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
+            80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 1px); }
+            100% { clip-path: inset(30% 0 50% 0); transform: translate(1px, -1px); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, 1px); }
+            20% { clip-path: inset(30% 0 20% 0); transform: translate(-2px, 2px); }
+            40% { clip-path: inset(70% 0 10% 0); transform: translate(2px, -1px); }
+            60% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, 1px); }
+            80% { clip-path: inset(50% 0 30% 0); transform: translate(1px, 2px); }
+            100% { clip-path: inset(5% 0 80% 0); transform: translate(-1px, -2px); }
+        }
+
+        .bh-subtitle {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            letter-spacing: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* ================= CONTENIDO EDITORIAL ================= */
+        .editorial-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 20px;
+        }
+
+        .editorial-intro {
+            text-align: center;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-family: 'Playfair Display', serif;
+            color: #ddd;
+            max-width: 900px;
+            margin: 0 auto 5rem auto;
+            border-left: 2px solid var(--barbie-pink);
+            border-right: 2px solid var(--oppie-orange);
+            padding: 0 2rem;
+        }
+
+        /* ================= TARJETAS DE IMPACTO (Diseño Dual) ================= */
+        .dual-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .bh-card {
+            background: #0f0f0f;
+            padding: 3rem;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+        }
+
+        .bh-card:hover { transform: translateY(-10px); }
+
+        .bh-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+        }
+
+        .card-barbie::before { background: var(--barbie-pink); box-shadow: 0 0 15px var(--barbie-pink); }
+        .card-oppie::before { background: var(--oppie-orange); box-shadow: 0 0 15px var(--oppie-orange); }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-barbie .card-title { color: var(--barbie-pink); }
+        .card-oppie .card-title { color: var(--oppie-orange); }
+
+        .card-text { font-size: 1.05rem; color: #aaa; line-height: 1.7; }
+
+        /* ================= SECCIÓN FAN ART & VIDEO ================= */
+        .media-section {
+            background: #080808;
+            padding: 6rem 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .section-heading {
+            text-align: center;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        /* Video Contenedor */
+        .video-wrapper {
+            max-width: 900px;
+            margin: 3rem auto 6rem auto;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Galería Masonry para Fan Arts */
+        .fanart-masonry {
+            columns: 3;
+            column-gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 800px) { .fanart-masonry { columns: 2; } }
+        @media (max-width: 500px) { .fanart-masonry { columns: 1; } }
+
+        .fanart-item {
+            margin-bottom: 1.5rem;
+            break-inside: avoid;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fanart-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: grayscale(40%);
+        }
+
+        .fanart-item:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+/* ================= OPTIMIZACIÓN RESPONSIVA PARA SECCIÓN BARBENHEIMER ================= */
+ :root {
+            --oscar-gold: #c5a059; /* Un dorado elegante, no chillón */
+        }
+
+        body { background: #050505; }
+
+        /* ================= SECCIÓN DE CABECERA ================= */
+        .awards-hero {
+            padding: 10rem 5% 5rem 5%;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+        }
+
+        .oscar-statue {
+            height: 120px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.4));
+        }
+
+        /* ================= GRID DE PREMIOS PRINCIPALES ================= */
+        .awards-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .award-card {
+            background: #111;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .award-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--oscar-gold);
+            /* El aura dorada brillante */
+            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.2), 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        .award-card .award-count {
+            transition: var(--transition);
+        }
+
+        .award-card:hover .award-count {
+            text-shadow: 0 0 20px var(--oscar-gold);
+            transform: scale(1.1);
+        }
+
+        .award-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--oscar-gold);
+            opacity: 0.5;
+        }
+
+        .award-count {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 5rem;
+            color: var(--oscar-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-category {
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .award-list {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        /* ================= LISTA DETALLADA DE GANADORES ================= */
+        .winners-section {
+            padding: 5rem 10%;
+            background: #080808;
+        }
+
+        .winners-table {
+            width: 100%;
+            max-width: 900px;
+            margin: 3rem auto;
+            border-collapse: collapse;
+        }
+
+        .winners-table tr {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .winners-table td {
+            padding: 1.5rem 1rem;
+            font-size: 1.1rem;
+        }
+
+        .winner-name { color: #fff; font-weight: bold; }
+        .winner-role { color: var(--oscar-gold); font-family: 'Bebas Neue'; letter-spacing: 1px; }
+
+        /* Estilo para los laureles */
+        .laurel-icon { color: var(--oscar-gold); margin: 0 10px; font-size: 1.5rem; }
+
+/* ================= HISTORIA (LINEA DE TIEMPO) ================= */
+
+       /* ================= ESTILOS DE LA LÍNEA DE TIEMPO ================= */
+        .history-wrapper {
+            padding: 4rem 20px;
+        }
+        
+        .history-container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 2rem 2rem 2rem 3rem; /* Espacio extra a la izquierda para los puntos */
+            background: #0c0c0c; 
+            border-left: 4px solid var(--accent-color); 
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+
+        .history-section { 
+            margin-bottom: 5rem; 
+            position: relative; 
+        }
+
+        /* Nodos/Puntos de la línea de tiempo */
+        .history-section::before {
+            content: '';
+            position: absolute;
+            left: -3.85rem; /* Ajuste matemático para centrar el punto en la línea */
+            top: 5px;
+            width: 24px;
+            height: 24px;
+            background: var(--bg-color);
+            border: 4px solid var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(217, 119, 43, 0.8); /* Brillo radiactivo */
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .history-section:hover::before {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        .history-date { font-family: var(--font-title); color: var(--accent-color); font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 0.5rem; }
+        .history-heading { font-family: var(--font-title); font-size: 2rem; margin-bottom: 1.5rem; color: #fff; }
+        .history-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem; }
+        
+        .history-img-wrapper { margin: 2rem 0; text-align: center; overflow: hidden; border-radius: 4px; }
+        .history-img-wrapper img { width: 100%; max-height: 500px; object-fit: cover; filter: grayscale(100%) sepia(20%) contrast(120%); transition: var(--transition); }
+        .history-img-wrapper:hover img { filter: grayscale(0%) contrast(100%); transform: scale(1.02); }
+        .history-caption { font-size: 0.85rem; font-style: italic; color: #666; margin-top: 10px; }
+
+        /* Estilo especial para la actualidad */
+        .present-day .history-heading { color: #4CAF50; /* Un toque de verde esperanza */ }
+        .present-day .history-date { color: #4CAF50; }
+        .present-day::before { border-color: #4CAF50; box-shadow: 0 0 15px rgba(76, 175, 80, 0.8); }

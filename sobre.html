@@ -10,48 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     
-    <style>
-        /* Sección Sinopsis */
-        .synopsis-section {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            margin: 4rem auto 6rem auto;
-        }
-        .synopsis-text { flex: 1; }
-        .synopsis-quote {
-            font-family: var(--font-title);
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            line-height: 1.4;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 1.5rem;
-        }
-        .synopsis-p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
-        .synopsis-image { flex: 1; border-radius: 4px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
-        .synopsis-image img { width: 100%; height: auto; display: block; filter: contrast(110%); }
-
-        /* Tarjetas de Personajes Mejoradas */
-        .characters-title { font-family: var(--font-title); font-size: 2rem; color: #fff; text-align: center; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 2px; }
-        .characters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
-        .character-card { background: #111; border-radius: 4px; overflow: hidden; transition: var(--transition); border-top: 3px solid transparent; }
-        .character-card:hover { transform: translateY(-5px); border-top-color: var(--accent-color); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
-        
-        .char-img-wrapper { height: 250px; overflow: hidden; }
-        /* Usamos object-position: top para que no le corte la cabeza a los actores */
-        .char-img-wrapper img { width: 100%; height: 100%; object-fit: cover; object-position: top; filter: grayscale(80%); transition: var(--transition); }
-        .character-card:hover .char-img-wrapper img { filter: grayscale(0%); transform: scale(1.05); }
-        
-        .char-content { padding: 2rem; }
-        .char-name { font-family: var(--font-title); font-size: 1.4rem; color: #fff; margin-bottom: 0.2rem; }
-        .char-actor { color: var(--accent-color); font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
-        .char-bio { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
-
-        @media (max-width: 768px) {
-            .synopsis-section { flex-direction: column; gap: 2rem; }
-        }
-    </style>
 </head>
 <body>
 
@@ -191,6 +149,8 @@
             
         </section>
     </main>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
 
     <footer class="hollywood-footer">
         <div class="footer-inner">
