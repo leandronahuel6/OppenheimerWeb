@@ -138,6 +138,33 @@
             .security-form { padding: 2rem; }
             .stamp { position: relative; top: 0; right: 0; display: inline-block; margin-bottom: 1rem; }
         }
+
+        /* ================= ANIMACIÓN DE SELLO "AUTHORIZED" ================= */
+        .success-stamp {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* Empieza gigante (scale 4) y transparente */
+            transform: translate(-50%, -50%) scale(4) rotate(-10deg);
+            font-family: 'Bebas Neue', cursive;
+            font-size: 6rem;
+            color: #1b5e20; /* Verde oscuro estilo tinta */
+            border: 8px solid #1b5e20;
+            padding: 10px 40px;
+            border-radius: 8px;
+            opacity: 0;
+            pointer-events: none; /* Para que no bloquee los clics */
+            z-index: 1000;
+            /* La magia del rebote (cubic-bezier) al estampar */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* La clase que añadiremos con JavaScript para mostrarlo */
+        .success-stamp.show {
+            transform: translate(-50%, -50%) scale(1) rotate(-10deg);
+            opacity: 0.9;
+        }
+
     </style>
 </head>
 <body>
@@ -158,9 +185,11 @@
     </header>
 
     <main class="contact-container animate-fade-up">
-        <form class="security-form">
+        <form class="security-form" id="securityForm">
             <div class="staple"></div>
             <div class="stamp">Top Secret</div>
+            
+            <div class="success-stamp" id="successStamp">AUTHORIZED</div>
             
             <div class="form-header">
                 <h1>Personnel Security Questionnaire</h1>

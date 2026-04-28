@@ -128,22 +128,38 @@ footer {
 
 /* El botón de flecha a la izquierda */
 .back-to-top {
-    position: absolute;
-    left: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
+    position: fixed; /* Ahora es fijo en la pantalla */
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    color: #000;
     border: none;
-    color: var(--text-main);
-    font-size: 2rem;
-    font-weight: 300;
+    border-radius: 50%;
     cursor: pointer;
-    transition: var(--transition);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    opacity: 0; /* Empieza oculto */
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.back-to-top.show {
+    opacity: 1; /* Se muestra al hacer scroll */
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .back-to-top:hover {
-    color: var(--accent-color);
-    transform: translateY(-50%) scale(1.2); /* Efecto al pasar el mouse */
+    transform: scale(1.1) translateY(-5px);
+    background: #fff;
 }
 
 /* Estructura para los logos */

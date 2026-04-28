@@ -28,6 +28,14 @@ if (timerElement) {
 const backToTopBtn = document.getElementById('backToTop');
 
 if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -144,5 +152,37 @@ if (lightbox && galleryItems.length > 0) {
         if (e.key === 'ArrowRight') navigate(1);
         if (e.key === 'ArrowLeft') navigate(-1);
         if (e.key === 'Escape') closeLightboxGallery();
+    });
+
+    
+}
+
+// ================= LÓGICA DEL FORMULARIO DE CONTACTO =================
+const securityForm = document.getElementById('securityForm');
+const successStamp = document.getElementById('successStamp');
+const submitBtn = document.querySelector('.submit-btn');
+
+if (securityForm && successStamp && submitBtn) {
+    securityForm.addEventListener('submit', (e) => {
+        // 1. Evita que la página se recargue al enviar
+        e.preventDefault(); 
+
+        // 2. Muestra el sello con el efecto de impacto
+        successStamp.classList.add('show');
+        
+        // 3. Cambia el texto y color del botón para confirmar
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = "TRANSMISSION SUCCESSFUL";
+        submitBtn.style.background = "#1b5e20"; // Verde tinta
+        submitBtn.disabled = true; // Desactiva el botón
+
+        // 4. (Opcional) Limpia el formulario y oculta el sello después de 4 segundos
+        setTimeout(() => {
+            securityForm.reset();
+            successStamp.classList.remove('show');
+            submitBtn.textContent = originalText;
+            submitBtn.style.background = "var(--ink-color)";
+            submitBtn.disabled = false;
+        }, 4000);
     });
 }
