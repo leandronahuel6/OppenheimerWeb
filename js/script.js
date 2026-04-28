@@ -13,14 +13,22 @@ if (hamburger && navLinks) {
 const timerElement = document.getElementById('timer');
 
 if (timerElement) {
+    // Fecha histórica: 6 de Agosto de 1945 a las 08:15 AM (Hiroshima)
+    const detonationDate = new Date('1945-08-06T08:15:00');
+
     setInterval(() => {
         const now = new Date();
-        const ms = String(Math.floor(now.getMilliseconds() / 10)).padStart(2, '0');
-        const s = String(now.getSeconds()).padStart(2, '0');
-        const m = String(now.getMinutes()).padStart(2, '0');
-        const h = String(now.getHours()).padStart(2, '0');
+        const diff = now - detonationDate; // Diferencia en milisegundos desde 1945
+
+        // Cálculos matemáticos del tiempo transcurrido
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+        const minutes = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
+        const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+        const ms = String(Math.floor((diff % 1000) / 10)).padStart(2, '0'); // Mantenemos el parpadeo rápido
         
-        timerElement.innerText = `T- ${h}:${m}:${s}:${ms}`;
+        // Lo mostramos con "T+" porque el evento ya ocurrió
+        timerElement.innerText = `T+ ${days} DÍAS ${hours}:${minutes}:${seconds}:${ms}`;
     }, 50); 
 }
 

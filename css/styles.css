@@ -40,10 +40,10 @@ header {
     margin: 0 auto;
 }
 .logo {
-    font-family: var(--font-title);
+    font-family: 'Bebas Neue', cursive;
     font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 3px;
+    font-weight: 400;
+    letter-spacing: 5px;
     color: var(--accent-color);
 }
 .nav-links {
@@ -108,141 +108,105 @@ header {
 }
 
 /* ================= FOOTER ================= */
-/* ================= FOOTER ESTILO HOLLYWOOD ================= */
-footer {
-    background-color: #000; /* Fondo negro puro como en la imagen */
-    padding: 3rem 5% 2rem 5%; /* Más espacio arriba y abajo */
-    border-top: 1px solid rgba(255,255,255,0.05);
-    position: relative;
-    font-family: var(--font-body);
+/* ================= NEW HOLLYWOOD FOOTER STYLE ================= */
+.hollywood-footer {
+    background-color: #000;
+    padding: 60px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
 }
 
-.footer-content {
-    max-width: 1200px;
+.footer-inner {
+    max-width: 1000px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
 }
 
-/* El botón de flecha a la izquierda */
-.back-to-top {
-    position: fixed; /* Ahora es fijo en la pantalla */
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: var(--accent-color);
-    color: #000;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 2000;
+/* Alineación de filas de logos */
+.billing-row {
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.footer-img {
+    height: 25px; /* Altura pequeña para estilo créditos */
+    width: auto;
+    object-fit: contain;
+    /* Unifica todos los logos a un blanco sutil */
+    filter: brightness(0) invert(0.8); 
+    opacity: 0.6;
     transition: all 0.3s ease;
-    opacity: 0; /* Empieza oculto */
-    visibility: hidden;
-    pointer-events: none;
 }
 
-.back-to-top.show {
-    opacity: 1; /* Se muestra al hacer scroll */
-    visibility: visible;
-    pointer-events: auto;
+.footer-img:hover {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+    transform: scale(1.05);
 }
 
-.back-to-top:hover {
-    transform: scale(1.1) translateY(-5px);
-    background: #fff;
+/* Especial para logos redondos o cuadrados que se ven muy grandes */
+.studio-row .footer-img {
+    height: 35px; /* Un poco más grandes para compensar proporción */
 }
 
-/* Estructura para los logos */
-.footer-logos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+/* Links Legales */
+.footer-legal-nav {
+    margin: 30px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
 }
 
-/* Estilos de los logos */
-.footer-logos img {
-    height: 30px; 
-    /* AQUÍ ESTÁ LA MAGIA: invert(1) vuelve el negro en blanco puro */
-    filter: invert(1);
-    opacity: 0.6; /* Los dejamos un poco transparentes para que no brillen demasiado */
-    transition: var(--transition);
-    
-    color: var(--text-main); 
-    font-family: var(--font-title);
+.footer-legal-nav a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-/* Al pasar el mouse */
-.footer-logos img:hover {
-    opacity: 1; /* Al pasar el mouse se vuelven 100% blancos y opacos */
-    /* Mantenemos el invert(1) para que sigan siendo blancos */
-    filter: invert(1);
-}
-
-/* Enlaces legales */
-.footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.footer-links a {
-    color: var(--text-main);
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.footer-links a:hover {
+.footer-legal-nav a:hover {
     color: var(--accent-color);
 }
 
-.footer-links .separator {
-    color: var(--text-muted);
-    font-size: 0.6rem;
+.dot {
+    color: #333;
+    margin: 0 10px;
 }
 
-/* Copyright */
-.footer-copyright {
-    text-align: center;
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 10px;
+/* Bloque de texto final */
+.footer-copyright-block {
+    font-family: 'Montserrat', sans-serif;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-/* Ajustes para teléfonos móviles */
-@media (max-width: 768px) {
-    .back-to-top {
-        position: relative;
-        left: auto;
-        top: auto;
-        transform: none;
-        margin-bottom: 2rem;
-        display: block;
-        width: 100%;
+.main-copy {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.disclaimer {
+    font-size: 9px;
+    color: #444;
+    line-height: 1.6;
+    letter-spacing: 1px;
+}
+
+/* Responsive para celulares */
+@media (max-width: 600px) {
+    .billing-row {
+        gap: 20px;
     }
-    .back-to-top:hover {
-        transform: scale(1.1);
+    .footer-img {
+        height: 18px;
     }
-    .footer-logos img {
-        height: 25px; /* Logos un poco más chicos en móvil */
+    .studio-row .footer-img {
+        height: 25px;
     }
 }
 
@@ -390,11 +354,17 @@ footer {
 }
 
 /* Capa de sombra para que el texto resalte sobre el fuego/explosiones */
+/* Capa de sombra para que el texto resalte sobre el fuego y el borde inferior se desvanezca */
 .hero-overlay {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 100%);
+    /* El linear-gradient crea el fundido invisible en la parte de abajo (70% al 100%).
+       El radial-gradient mantiene la sombra circular que ya tenías.
+    */
+    background: 
+        linear-gradient(to bottom, rgba(10,10,10,0) 70%, var(--bg-color) 100%),
+        radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 100%);
     z-index: 2;
 }
 
@@ -403,6 +373,25 @@ footer {
     z-index: 3;
     text-align: center;
     padding: 0 20px;
+}
+
+/* Específico para el título h1 del inicio */
+.hero-content .logo {
+    /* Mínimo 2rem, escala con 12% del ancho de pantalla, máximo 8rem */
+    font-size: clamp(2rem, 12vw, 8rem); 
+    line-height: 0.9;
+    margin-bottom: 0.5rem;
+    display: block;
+    width: 100%;
+    word-wrap: break-word; /* Por si acaso, para que no desborde */
+}
+
+/* Ajuste fino para celulares muy pequeños (iPhone SE, etc) */
+@media (max-width: 400px) {
+    .hero-content .logo {
+        letter-spacing: 1px; /* Reducimos el espacio entre letras para que quepa */
+        font-size: 1.8rem;
+    }
 }
 
 .hero h1 {
@@ -1058,5 +1047,223 @@ footer {
     .lightbox-nav {
         padding: 0.5rem;
         font-size: 1.5rem;
+    }
+}
+
+/* ============================================================
+   SECCIÓN: OPTIMIZACIÓN RESPONSIVA GLOBAL
+   ============================================================ */
+
+/* Ajustes para Tablets y Móviles */
+@media (max-width: 1024px) {
+    .nav-links { gap: 1rem; font-size: 0.9rem; }
+    .hero h1 { font-size: 4rem; }
+}
+
+@media (max-width: 768px) {
+    /* Menú Hamburguesa */
+    .nav-links {
+        position: fixed;
+        top: 60px; right: -100%;
+        width: 100%; height: calc(100vh - 60px);
+        background: rgba(5,5,5,0.98);
+        flex-direction: column;
+        justify-content: center;
+        transition: 0.4s ease;
+    }
+    
+    .nav-links.active { right: 0; }
+    .hamburger { display: block; }
+
+    /* Barbenheimer Split */
+    .bh-hero-split { flex-direction: column; height: auto; }
+    .hero-side { min-height: 50vh; padding: 4rem 1rem; }
+    .center-mashup { position: relative; transform: translate(-50%, -50%); margin-top: -2rem; }
+
+    /* Galería Masonry */
+    .gallery-wrapper { columns: 1; padding: 1rem; }
+} /* <--- ¡AQUÍ CERRAMOS EL MODO CELULAR CORRECTAMENTE! */
+
+/* ================= ALINEACIÓN DE LOGOS DEL FOOTER ================= */
+.footer-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem; 
+    flex-wrap: wrap; 
+    margin-bottom: 1.5rem;
+}
+
+.footer-logos img {
+    height: 35px; 
+    width: auto;  
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.6) brightness(200%);
+    transition: var(--transition);
+}
+
+.footer-logos img:hover {
+    filter: grayscale(0%) opacity(1) brightness(100%);
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .footer-logos { gap: 1.5rem; }
+    .footer-logos img { height: 25px; }
+}
+
+/* ================= CITA ÉPICA DEL INICIO ================= */
+.hero-quote-container {
+    margin: 2.5rem auto;
+    text-align: center;
+    max-width: 850px;
+}
+
+.cinematic-quote {
+    font-family: 'Special Elite', monospace; /* Cambio a máquina de escribir */
+    font-size: clamp(1.4rem, 4vw, 2.2rem); /* Un poco más pequeña porque esta fuente es ancha */
+    font-style: normal; /* Le quitamos la cursiva */
+    color: #e0d8c3; /* Un tono ligeramente pergamino/hueso en lugar de blanco puro */
+    line-height: 1.5;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+    margin: 0;
+    letter-spacing: 2px; /* Las máquinas de escribir tienen las letras separadas */
+}
+
+.quote-author {
+    font-family: 'Bebas Neue', cursive;
+    color: var(--accent-color); 
+    letter-spacing: 5px;
+    font-size: 1.3rem;
+    margin-top: 1.2rem;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+/* ================= BOTÓN VOLVER ARRIBA FLOTANTE ================= */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color); /* Tu color naranja */
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    
+    /* Empieza oculto */
+    opacity: 0;
+    visibility: hidden;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: scale(1.1) translateY(-5px);
+    background: #fff;
+}
+
+/* ================= ESTILOS REDES SOCIALES ================= */
+.footer-socials {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.footer-socials a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    opacity: 1;
+    color: var(--accent-color);
+    letter-spacing: 4px;
+}
+
+/* ================= CORRECCIÓN ESPECÍFICA PARA DOLBY Y 70MM ================= */
+img[alt="dolby2"], img[alt="70MM"] {
+    height: 35px; /* Las hacemos un poco más grandes que IMAX para compensar */
+    filter: none; /* Le quitamos el filtro general para que no se hagan un cuadrado gris */
+    opacity: 0.7;
+    
+    /* EL TRUCO MÁGICO: 
+       Si la imagen tiene fondo NEGRO, 'screen' hace que el fondo se vuelva invisible. 
+       (Si resulta que tu imagen tiene fondo BLANCO, borra 'screen' y escribe 'multiply') */
+    mix-blend-mode: screen; 
+    
+    /* Si la imagen es negra con fondo blanco y quieres que sea blanca sin fondo, 
+       descomenta la siguiente línea quitando las barras y asteriscos: */
+    /* filter: invert(1); mix-blend-mode: screen; */
+}
+
+img[alt="Dolby"]:hover, img[alt="70MM"]:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   RESPONSIVE: PÁGINA DE INICIO (Móviles y Tablets)
+   ============================================================ */
+@media (max-width: 768px) {
+    /* 1. Ajuste del Hero (Título y Reloj) */
+    .hero-content {
+        padding: 0 1rem;
+        width: 100%;
+        overflow: hidden; /* Evita el scroll horizontal */
+    }
+    
+    .logo {
+        font-size: clamp(3rem, 10vw, 5rem); /* Se adapta mágicamente al ancho */
+        letter-spacing: 2px;
+    }
+
+    #timer {
+        font-size: clamp(0.9rem, 3vw, 1.2rem); 
+        letter-spacing: 1px;
+        white-space: nowrap; /* Fuerza a que no se rompa en dos líneas feas */
+    }
+
+    /* 2. Ajuste de la Cita Épica */
+    .cinematic-quote {
+        font-size: 1.4rem;
+        padding: 0 15px;
+    }
+    
+    .quote-author {
+        font-size: 1rem;
+    }
+
+    /* 3. Ajuste del Reparto (El Grid de Actores) */
+    .cast-grid {
+        display: grid;
+        /* La magia: en PC se ponen al lado, en celular bajan solos */
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .cast-card {
+        margin-bottom: 10px;
     }
 }
