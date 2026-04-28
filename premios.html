@@ -3,10 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premios | Oppenheimer</title>
+    <title>Premios y Reconocimientos | Oppenheimer</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/Icono2.webp" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Bebas+Neue&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        :root {
+            --oscar-gold: #c5a059; /* Un dorado elegante, no chillón */
+        }
+
+        body { background: #050505; }
+
+        /* ================= SECCIÓN DE CABECERA ================= */
+        .awards-hero {
+            padding: 10rem 5% 5rem 5%;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+        }
+
+        .oscar-statue {
+            height: 120px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.4));
+        }
+
+        /* ================= GRID DE PREMIOS PRINCIPALES ================= */
+        .awards-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .award-card {
+            background: #111;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .award-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--oscar-gold);
+            /* El aura dorada brillante */
+            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.2), 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        .award-card .award-count {
+            transition: var(--transition);
+        }
+
+        .award-card:hover .award-count {
+            text-shadow: 0 0 20px var(--oscar-gold);
+            transform: scale(1.1);
+        }
+
+        .award-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--oscar-gold);
+            opacity: 0.5;
+        }
+
+        .award-count {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 5rem;
+            color: var(--oscar-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-category {
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .award-list {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        /* ================= LISTA DETALLADA DE GANADORES ================= */
+        .winners-section {
+            padding: 5rem 10%;
+            background: #080808;
+        }
+
+        .winners-table {
+            width: 100%;
+            max-width: 900px;
+            margin: 3rem auto;
+            border-collapse: collapse;
+        }
+
+        .winners-table tr {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .winners-table td {
+            padding: 1.5rem 1rem;
+            font-size: 1.1rem;
+        }
+
+        .winner-name { color: #fff; font-weight: bold; }
+        .winner-role { color: var(--oscar-gold); font-family: 'Bebas Neue'; letter-spacing: 1px; }
+
+        /* Estilo para los laureles */
+        .laurel-icon { color: var(--oscar-gold); margin: 0 10px; font-size: 1.5rem; }
+    </style>
 </head>
 <body>
 
@@ -15,38 +134,133 @@
             <a href="index.html" class="logo">OPPENHEIMER</a>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="sobre.html">Sobre la Película</a></li>
+                <li><a href="sobre.html">La Película</a></li>
+                <li><a href="historia.html">Proyecto Manhattan</a></li>
                 <li><a href="galeria.html">Galería</a></li>
-                <li><a href="premios.html" style="color: var(--accent-color);">Premios</a></li>
+                <li><a href="premios.html" style="color: var(--oscar-gold);">Premios</a></li>
                 <li><a href="barbenheimer.html">Barbenheimer</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
-            <button class="hamburger" aria-label="Menú">
-                <span></span><span></span><span></span>
-            </button>
         </nav>
     </header>
 
     <main>
-        <div class="page-header">
-            <h1 class="page-title">Reconocimientos</h1>
-        </div>
-        <section class="container" style="text-align: center;">
-            <h2 style="font-family: var(--font-title); margin-bottom: 20px;">Ganadora de 7 Premios de la Academia</h2>
-            <ul style="list-style: none; color: var(--text-muted); font-size: 1.2rem; display: inline-block; text-align: left;">
-                <li style="margin-bottom: 10px;">⭐ Mejor Película</li>
-                <li style="margin-bottom: 10px;">⭐ Mejor Director (Christopher Nolan)</li>
-                <li style="margin-bottom: 10px;">⭐ Mejor Actor (Cillian Murphy)</li>
-                <li style="margin-bottom: 10px;">⭐ Mejor Actor de Reparto (Robert Downey Jr.)</li>
-                <li style="margin-bottom: 10px;">⭐ Mejor Banda Sonora Original</li>
-                <li style="margin-bottom: 10px;">⭐ Mejor Fotografía</li>
-                <li style="margin-bottom: 10px;">⭐ Mejor Montaje</li>
-            </ul>
+        <section class="awards-hero animate-fade-up">
+            <img src="img/oscar.webp" alt="Icono Oscar" class="oscar-statue" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(10deg);">
+            <h1 class="page-title" style="color: var(--oscar-gold);">La Consagración de Nolan</h1>
+            <p class="intro-text" style="max-width: 800px; margin: 2rem auto;">
+                Oppenheimer se convirtió en una de las películas más premiadas de la historia moderna, barriendo en la temporada 2023-2024 y devolviendo al cine épico el reconocimiento que merece.
+            </p>
+        </section>
+
+        <section class="awards-grid">
+            <article class="award-card animate-fade-up">
+                <div class="award-count">07</div>
+                <h2 class="award-category">Premios Oscar</h2>
+                <ul class="award-list">
+                    <li>Mejor Película</li>
+                    <li>Mejor Director (C. Nolan)</li>
+                    <li>Mejor Actor (C. Murphy)</li>
+                    <li>Mejor Actor de Reparto (R. Downey Jr.)</li>
+                    <li>Mejor Banda Sonora</li>
+                    <li>Mejor Fotografía</li>
+                    <li>Mejor Montaje</li>
+                </ul>
+            </article>
+
+            <article class="award-card animate-fade-up" style="animation-delay: 0.2s;">
+                <div class="award-count">05</div>
+                <h2 class="award-category">Golden Globes</h2>
+                <ul class="award-list">
+                    <li>Mejor Película - Drama</li>
+                    <li>Mejor Director</li>
+                    <li>Mejor Actor - Drama</li>
+                    <li>Mejor Actor de Reparto</li>
+                    <li>Mejor Banda Sonora</li>
+                </ul>
+            </article>
+
+            <article class="award-card animate-fade-up" style="animation-delay: 0.4s;">
+                <div class="award-count">07</div>
+                <h2 class="award-category">Premios BAFTA</h2>
+                <ul class="award-list">
+                    <li>Mejor Película</li>
+                    <li>Mejor Director</li>
+                    <li>Mejor Actor</li>
+                    <li>Mejor Actor de Reparto</li>
+                    <li>Mejor Fotografía</li>
+                    <li>Mejor Montaje</li>
+                    <li>Mejor Banda Sonora</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="winners-section">
+            <h2 class="section-title animate-fade-up" style="text-align: center;">Cuadro de Honor</h2>
+            <table class="winners-table animate-fade-up">
+                <tr>
+                    <td><span class="winner-role">Director</span></td>
+                    <td><span class="winner-name">Christopher Nolan</span></td>
+                    <td style="text-align: right;"><span class="laurel-icon">🏆</span></td>
+                </tr>
+                <tr>
+                    <td><span class="winner-role">Protagonista</span></td>
+                    <td><span class="winner-name">Cillian Murphy</span></td>
+                    <td style="text-align: right;"><span class="laurel-icon">🏆</span></td>
+                </tr>
+                <tr>
+                    <td><span class="winner-role">Reparto</span></td>
+                    <td><span class="winner-name">Robert Downey Jr.</span></td>
+                    <td style="text-align: right;"><span class="laurel-icon">🏆</span></td>
+                </tr>
+                <tr>
+                    <td><span class="winner-role">Música</span></td>
+                    <td><span class="winner-name">Ludwig Göransson</span></td>
+                    <td style="text-align: right;"><span class="laurel-icon">🏆</span></td>
+                </tr>
+                <tr>
+                    <td><span class="winner-role">Producción</span></td>
+                    <td><span class="winner-name">Emma Thomas</span></td>
+                    <td style="text-align: right;"><span class="laurel-icon">🏆</span></td>
+                </tr>
+            </table>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Proyecto Educativo/Portafolio. Sitio no oficial de la película Oppenheimer.</p>
+        <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+        <div class="footer-content">
+            <div class="footer-logos tech-logos">
+                <img src="img/Dolby.png" alt="Dolby Cinema">
+                <img src="img/imax.png" alt="IMAX">
+                <img src="img/70mm.png" alt="70MM FILM">
+            </div>
+            <div class="footer-logos studio-logos">
+                <img src="img/Syncopy.png" alt="Syncopy">
+                <img src="img/Universal.png" alt="Universal Pictures">
+                <img src="img/rated-r.png" alt="Rated R"> 
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Ad Choices</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Cookie Notice</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Terms of Service</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Filmratings.com</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">MPA.ORG</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Feedback</a></li>
+            </ul>
+            <div class="footer-copyright">
+                <p>MOVIE PLATFORM © 2026 POWSTER &copy; 2026 Universal Pictures. ALL RIGHTS RESERVED.</p>
+                <p style="margin-top: 5px; opacity: 0.5;">Proyecto educativo de portafolio web. Sitio no oficial.</p>
+                <p style="margin-top: 5px; color: var(--barbie-pink); font-size: 0.65rem; font-weight: bold; letter-spacing: 1px;">BARBENHEIMER SPECIAL EDITION</p>
+            </div>
+        </div>
     </footer>
 
     <script src="js/script.js"></script>
