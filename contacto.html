@@ -3,23 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | Oppenheimer</title>
+    <title>Contacto | Autorización de Seguridad</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/Icono2.webp" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Special+Elite&family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     
     <style>
-        .contact-form { max-width: 600px; margin: 0 auto; background: #111; padding: 3rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .form-group { margin-bottom: 1.5rem; text-align: left; }
-        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem; }
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 10px; background: #050505; border: 1px solid #333; color: white; border-radius: 4px; font-family: var(--font-body);
+        :root {
+            --paper-color: #e0d8c3; /* Color papel viejo */
+            --ink-color: #222;
+            --stamp-red: #8b0000;
         }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); }
+
+        body { background: #0a0a0a; }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 80px auto 60px auto;
+            padding: 4rem 2rem;
+            position: relative;
+            /* Imagen de mesa de madera oscura para dar realismo */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('img/escritorio.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
+        }
+
+        /* ================= DISEÑO DEL FORMULARIO (EXPEDIENTE) ================= */
+        .security-form {
+            background-color: var(--paper-color);
+            padding: 4rem;
+            color: var(--ink-color);
+            font-family: 'Special Elite', cursive; /* Fuente de máquina de escribir */
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.5);
+            position: relative;
+            background-image: radial-gradient(#d4cbb3 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Sello de Clasificado */
+        .stamp {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            border: 4px solid var(--stamp-red);
+            color: var(--stamp-red);
+            padding: 10px 20px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            text-transform: uppercase;
+            transform: rotate(15deg);
+            opacity: 0.8;
+            user-select: none;
+            border-radius: 4px;
+        }
+
+        .form-header {
+            border-bottom: 2px solid var(--ink-color);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        .form-header h1 { font-size: 1.8rem; margin: 0; }
+        .form-header p { font-size: 0.9rem; margin: 5px 0 0 0; }
+
+        .input-group {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .input-group input, 
+        .input-group textarea, 
+        .input-group select {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #888;
+            padding: 10px 5px;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.1rem;
+            color: var(--ink-color);
+            outline: none;
+        }
+
+        .input-group input:focus, 
+        .input-group textarea:focus {
+            border-bottom: 2px solid var(--ink-color);
+        }
+
+        /* Botón de envío como sello de aprobación */
         .submit-btn {
-            background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 12px 30px; font-family: var(--font-title); font-size: 1.1rem; cursor: pointer; transition: var(--transition); width: 100%; text-transform: uppercase; letter-spacing: 2px;
+            background: var(--ink-color);
+            color: var(--paper-color);
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 2rem;
         }
-        .submit-btn:hover { background: var(--accent-color); color: #000; }
+
+        .submit-btn:hover {
+            background: var(--stamp-red);
+            transform: scale(1.02);
+        }
+
+        /* Decoración de clips o grapas */
+        .staple {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 15px;
+            background: #999;
+            border-radius: 5px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 600px) {
+            .security-form { padding: 2rem; }
+            .stamp { position: relative; top: 0; right: 0; display: inline-block; margin-bottom: 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -29,45 +147,92 @@
             <a href="index.html" class="logo">OPPENHEIMER</a>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="sobre.html">Sobre la Película</a></li>
+                <li><a href="sobre.html">La Película</a></li>
+                <li><a href="historia.html">Proyecto Manhattan</a></li>
                 <li><a href="galeria.html">Galería</a></li>
                 <li><a href="premios.html">Premios</a></li>
                 <li><a href="barbenheimer.html">Barbenheimer</a></li>
                 <li><a href="contacto.html" style="color: var(--accent-color);">Contacto</a></li>
             </ul>
-            <button class="hamburger" aria-label="Menú">
-                <span></span><span></span><span></span>
-            </button>
         </nav>
     </header>
 
-    <main>
-        <div class="page-header">
-            <h1 class="page-title">Contacto</h1>
-            <p style="color: var(--text-muted); margin-top: 10px;">Comunícate con el equipo de prensa o producción.</p>
-        </div>
-        
-        <section class="container">
-            <form class="contact-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensaje</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Enviar Mensaje</button>
-            </form>
-        </section>
+    <main class="contact-container animate-fade-up">
+        <form class="security-form">
+            <div class="staple"></div>
+            <div class="stamp">Top Secret</div>
+            
+            <div class="form-header">
+                <h1>Personnel Security Questionnaire</h1>
+                <p>U.S. ATOMIC ENERGY COMMISSION - LOS ALAMOS LABORATORY</p>
+            </div>
+
+            <div class="input-group">
+                <label for="name">Full Name / Identificación:</label>
+                <input type="text" id="name" name="name" required placeholder="Escriba su nombre aquí...">
+            </div>
+
+            <div class="input-group">
+                <label for="email">Communication Channel (Email):</label>
+                <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com">
+            </div>
+
+            <div class="input-group">
+                <label for="clearance">Clearance Level / Asunto:</label>
+                <select id="clearance" name="clearance">
+                    <option value="general">Consulta General</option>
+                    <option value="restricted">Acceso Restringido (Colaboración)</option>
+                    <option value="top-secret">Top Secret (Urgente)</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="message">Transmission / Mensaje:</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Comience su transmisión clasificada..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Authorize Transmission</button>
+            
+            <p style="font-size: 0.7rem; margin-top: 2rem; opacity: 0.7; text-align: center;">
+                WARNING: Unauthorized disclosure of information subject to criminal sanctions.
+            </p>
+        </form>
     </main>
 
     <footer>
-        <p>&copy; 2026 Proyecto Educativo/Portafolio. Sitio no oficial de la película Oppenheimer.</p>
+        <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+        <div class="footer-content">
+            <div class="footer-logos tech-logos">
+                <img src="img/Dolby.png" alt="Dolby Cinema">
+                <img src="img/imax.png" alt="IMAX">
+                <img src="img/70mm.png" alt="70MM FILM">
+            </div>
+            <div class="footer-logos studio-logos">
+                <img src="img/Syncopy.png" alt="Syncopy">
+                <img src="img/Universal.png" alt="Universal Pictures">
+                <img src="img/rated-r.png" alt="Rated R"> 
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Ad Choices</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Cookie Notice</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Terms of Service</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Filmratings.com</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">MPA.ORG</a></li>
+                <li class="separator">•</li>
+                <li><a href="#">Feedback</a></li>
+            </ul>
+            <div class="footer-copyright">
+                <p>MOVIE PLATFORM © 2026 POWSTER &copy; 2026 Universal Pictures. ALL RIGHTS RESERVED.</p>
+                <p style="margin-top: 5px; opacity: 0.5;">Proyecto educativo de portafolio web. Sitio no oficial.</p>
+                <p style="margin-top: 5px; color: var(--accent-color); font-size: 0.6rem; letter-spacing: 2px;">SECURITY CLEARANCE REQUIRED</p>
+            </div>
+        </div>
     </footer>
 
     <script src="js/script.js"></script>
