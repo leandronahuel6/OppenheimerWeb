@@ -154,8 +154,22 @@ header {
 }
 
 .hero h1 {
+    font-family: var(--font-title); /* Usa Montserrat */
+    font-size: clamp(2rem, 8vw, 6rem); /* Tamaño grande y responsivo */
+    font-weight: 900; /* Muy negrita */
+    text-transform: uppercase; /* Para que sea igual al logo */
     text-shadow: 0 0 20px rgba(0, 0, 0, 1);
     margin-bottom: 0.5rem;
+    line-height: 0.9; /* Compacto */
+    background: linear-gradient(to bottom, #ffffff, #d9772b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* Esto es clave para que no se vea "radioactivo" */
+    opacity: 0.95;
+    color: #ffffff;
+    /* Sombra suave color cobre */
+    text-shadow: 0 0 15px rgba(217, 119, 43, 0.4);
 }
 
 .cinematic-timer {
