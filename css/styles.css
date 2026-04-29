@@ -1057,9 +1057,10 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
    ============================================================ */
 .contact-container {
     max-width: 900px;
-    margin: 80px auto 60px;
+    margin: 80px auto 0;
     padding: 4rem 2rem;
     position: relative;
+    min-height: 0;
     background:
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url('../img/escritorio.webp') center / cover;
@@ -1354,6 +1355,7 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
 
 /* Movil pequeno (≤ 600px) */
 @media (max-width: 600px) {
+    .contact-container { margin-top: 65px; margin-bottom: 0; padding: 1.5rem 1rem; }
     .security-form { padding: 2rem; }
     .stamp { position: relative; top: 0; right: 0; display: inline-block; margin-bottom: 1rem; }
     .gallery-wrapper { columns: 1; }
