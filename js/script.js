@@ -171,26 +171,56 @@ const successStamp = document.getElementById('successStamp');
 const submitBtn = document.querySelector('.submit-btn');
 
 if (securityForm && successStamp && submitBtn) {
-    securityForm.addEventListener('submit', (e) => {
-        // 1. Evita que la página se recargue al enviar
+    securityForm.addEventListener('submit', async (e) => {
         e.preventDefault(); 
-
-        // 2. Muestra el sello con el efecto de impacto
-        successStamp.classList.add('show');
         
-        // 3. Cambia el texto y color del botón para confirmar
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = "TRANSMISSION SUCCESSFUL";
-        submitBtn.style.background = "#1b5e20"; // Verde tinta
-        submitBtn.disabled = true; // Desactiva el botón
+        // 1. Guardamos el HTML original exacto
+        const originalHTML = submitBtn.innerHTML;
+        
+        // 2. Modificamos el contenido temporalmente
+        submitBtn.innerHTML = "TRANSMITTING..."; 
+        submitBtn.style.opacity = "0.7"; 
+        submitBtn.disabled = true;
 
-        // 4. (Opcional) Limpia el formulario y oculta el sello después de 4 segundos
-        setTimeout(() => {
-            securityForm.reset();
-            successStamp.classList.remove('show');
-            submitBtn.textContent = originalText;
-            submitBtn.style.background = "var(--ink-color)";
+        try {
+            const formData = new FormData(securityForm);
+            
+            // LA RUTA DE TU ENDPOINT DE FORMSPREE
+            const response = await fetch("https://formspree.io/f/mvzdejqk", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Mostramos el sello de éxito
+                successStamp.classList.add('show');
+                submitBtn.innerHTML = "TRANSMISSION SUCCESSFUL";
+                submitBtn.style.opacity = "1";
+                
+                // Limpiamos y restauramos después de 4 segundos
+                setTimeout(() => {
+                    securityForm.reset();
+                    successStamp.classList.remove('show');
+                    
+                    // Restauramos el botón a su estado original
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.style.opacity = ""; 
+                    submitBtn.disabled = false;
+                }, 4000);
+            } else {
+                alert("Error en la transmisión clasificada. Intente nuevamente.");
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.style.opacity = "";
+                submitBtn.disabled = false;
+            }
+        } catch (error) {
+            alert("Error de conexión. La transmisión no pudo salir de Los Álamos.");
+            submitBtn.innerHTML = originalHTML;
+            submitBtn.style.opacity = "";
             submitBtn.disabled = false;
-        }, 4000);
+        }
     });
 }
