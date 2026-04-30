@@ -1382,6 +1382,10 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
     .footer-legal-nav .dot {
         display: none;
     }
+
+    .page-header {
+        margin-top: 150px; 
+    }
 }
 
 /* Movil pequeno (≤ 600px) */
