@@ -202,8 +202,13 @@ header {
 }
 
 .animate-oppenheimer {
-    opacity: 0;
-    animation: oppenheimerReveal 4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+animation: oppenheimerRevealMobile 4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes oppenheimerRevealMobile {
+    0%   { opacity: 0; filter: blur(20px); letter-spacing: 15px; transform: scale(1.15); }
+    40%  { opacity: 0.8; filter: blur(5px); }
+    100% { opacity: 1; filter: blur(0); letter-spacing: 2px; transform: scale(1); }
 }
 
 /* ============================================================
@@ -699,6 +704,7 @@ header {
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .footer-socials a {
@@ -719,6 +725,7 @@ header {
     gap: 40px;
     margin-bottom: 25px;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .footer-img {
@@ -1061,6 +1068,7 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
     padding: 4rem 2rem;
     position: relative;
     min-height: 0;
+    overflow: hidden;
     background:
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url('../img/escritorio.webp') center / cover;
@@ -1105,6 +1113,7 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
 .input-group input,
 .input-group textarea,
 .input-group select {
+    width: 100%;
     background: transparent;
     border: none;
     border-bottom: 1px solid #888;
@@ -1305,7 +1314,11 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
 /* Movil grande (≤ 768px) */
 @media (max-width: 768px) {
     /* Nav */
-    .hamburger { display: block; }
+    .hamburger { 
+        display: block; 
+        position: relative;
+        z-index: 2001;
+    }
 
     .nav-links {
         position: fixed;
@@ -1317,9 +1330,10 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
         justify-content: center;
         align-items: center;
         transition: 0.4s ease;
+        z-index: 2000;
     }
 
-    .nav-links.active { right: 0; }
+    .nav-links.active { right: 0; z-index: 2000; }
 
     .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
@@ -1351,14 +1365,16 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
     .modern-gallery { grid-template-columns: 1fr; }
     .modern-gallery .featured { grid-column: span 1; height: 300px; }
     .modern-gallery .modern-img:not(.featured) { height: 200px; }
+
 }
 
 /* Movil pequeno (≤ 600px) */
 @media (max-width: 600px) {
     .contact-container { margin-top: 65px; margin-bottom: 0; padding: 1.5rem 1rem; }
-    .security-form { padding: 2rem; }
+    .security-form { padding: 2rem; box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.5);}
     .stamp { position: relative; top: 0; right: 0; display: inline-block; margin-bottom: 1rem; }
     .gallery-wrapper { columns: 1; }
+    .form-header h1 { font-size: 1.4rem; }
 }
 
 /* Fanart: tablet (≤ 800px) */
