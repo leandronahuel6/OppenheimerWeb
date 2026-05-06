@@ -1411,3 +1411,291 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
 @media (max-width: 400px) {
     .hero-content .logo { letter-spacing: 1px; font-size: 1.8rem; }
 }
+
+/* ================= EFECTOS DE PÁGINA PREMIOS ================= */
+
+/* Efecto pulsante dorado detrás del Óscar */
+.oscar-glow {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+.oscar-glow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(0,0,0,0) 70%);
+    z-index: -1;
+    border-radius: 50%;
+    animation: pulse-glow 3s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-glow {
+    0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+}
+
+/* Elevación y brillo para las tarjetas de premios */
+.award-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+.award-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--oscar-gold, #d4af37), transparent);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+.award-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.2);
+}
+.award-card:hover::before {
+    transform: scaleX(1);
+}
+.award-count {
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+    transition: transform 0.3s ease;
+}
+.award-card:hover .award-count {
+    transform: scale(1.1);
+}
+
+/* Rediseño del Cuadro de Honor */
+.winners-table {
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    width: 100%;
+    max-width: 850px;
+    margin: 2rem auto;
+}
+.winners-table tr {
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+}
+.winners-table tr:hover {
+    background: rgba(212, 175, 55, 0.08);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.winners-table td {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+.winners-table td:first-child {
+    border-left: 3px solid transparent;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+.winners-table tr:hover td:first-child {
+    border-left-color: var(--oscar-gold, #d4af37);
+}
+.winners-table td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.winner-role {
+    font-family: 'Special Elite', monospace;
+    color: var(--oscar-gold, #d4af37);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+.winner-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+.laurel-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.4));
+}
+
+/* ================= PARTÍCULAS DORADAS SUTILES (PREMIOS) ================= */
+#particles-container {
+    position: fixed; /* Se queda fijo aunque hagas scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* CRUCIAL: Evita que las partículas bloqueen clics o selección de texto */
+    z-index: 0; /* Se mantiene por detrás del texto y las tarjetas */
+    overflow: hidden;
+}
+
+.golden-particle {
+    position: absolute;
+    background-color: var(--oscar-gold, #d4af37);
+    border-radius: 50%;
+    opacity: 0;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.4; /* Opacidad baja para que sea sutil */
+        transform: translateY(0) scale(1);
+    }
+    90% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(110vh) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* ================= VIÑETAS PERSONALIZADAS ================= */
+.award-list {
+    list-style: none; /* Quitamos el punto por defecto */
+    padding-left: 0;
+}
+
+.award-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.award-list li::before {
+    content: '✦'; /* Puedes cambiarlo por '★' o '❖' */
+    position: absolute;
+    left: 0;
+    top: 0px;
+    color: var(--oscar-gold, #d4af37);
+    font-size: 1.1rem;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+/* ================= CONTADOR GLOBAL DE PREMIOS ================= */
+.global-counter-container {
+    text-align: center;
+    margin: 3rem auto 1rem;
+    padding: 2rem;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+}
+
+.counter-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5.5rem;
+    color: var(--oscar-gold, #d4af37);
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    margin-bottom: 0.5rem;
+}
+
+.counter-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 700;
+}
+
+/* ================= GALERÍA DE LA GALA (PREMIOS) ================= */
+.gala-section {
+    margin: 4rem auto;
+    max-width: 900px;
+    padding: 0 20px;
+}
+.gala-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.gala-item {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.gala-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    transition: transform 0.5s ease;
+}
+.gala-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--oscar-gold, #d4af37);
+    box-shadow: 0 15px 25px rgba(212, 175, 55, 0.15);
+}
+.gala-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ================= BOTÓN MUSICAL (EASTER EGG) ================= */
+.music-btn {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--oscar-gold, #d4af37);
+    color: var(--oscar-gold, #d4af37);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin-left: 15px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    vertical-align: middle;
+    font-size: 0.8rem;
+}
+.music-btn:hover {
+    background: var(--oscar-gold, #d4af37);
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+/* Clase que se activa mediante JS cuando la música suena */
+.music-btn.playing {
+    animation: pulse-music 1.5s infinite;
+    background: var(--oscar-gold, #d4af37);
+    color: #000;
+}
+@keyframes pulse-music {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+/* ================= SELECCIÓN DE TEXTO ================= */
+::selection {
+    background: var(--oscar-gold, #d4af37);
+    color: #111;
+    text-shadow: none;
+}
+::-moz-selection {
+    background: var(--oscar-gold, #d4af37);
+    color: #111;
+    text-shadow: none;
+}
+
+/* ================= PROTECCIÓN RESPONSIVE PARA LA TABLA ================= */
+.winners-section {
+    overflow-x: auto; /* Permite scroll horizontal solo si es estrictamente necesario */
+    -webkit-overflow-scrolling: touch; /* Hace que el scroll en móviles sea suave */
+    padding-bottom: 1rem; /* Espacio para la barra de scroll si aparece */
+}

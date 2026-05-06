@@ -224,3 +224,106 @@ if (securityForm && successStamp && submitBtn) {
         }
     });
 }
+
+// ================= LÓGICA DE PARTÍCULAS DORADAS (PÁGINA PREMIOS) =================
+const particlesContainer = document.getElementById('particles-container');
+
+if (particlesContainer) {
+    const createParticle = () => {
+        const particle = document.createElement('div');
+        particle.classList.add('golden-particle');
+
+        // Propiedades aleatorias para un efecto orgánico y no invasivo
+        const size = Math.random() * 3 + 2; // Tamaño pequeño: entre 2px y 5px
+        const left = Math.random() * 100; // Posición horizontal a lo ancho de la pantalla
+        const duration = Math.random() * 10 + 15; // Caída muy lenta: entre 15s y 25s
+        const delay = Math.random() * 5; // Retraso aleatorio al inicio
+
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.animationDelay = `${delay}s`;
+
+        // Un leve resplandor alrededor de cada partícula
+        particle.style.boxShadow = `0 0 ${size}px var(--oscar-gold, #d4af37)`;
+
+        particlesContainer.appendChild(particle);
+
+        // Limpieza: eliminamos el elemento del DOM cuando termina su animación
+        setTimeout(() => {
+            particle.remove();
+        }, (duration + delay) * 1000);
+    };
+
+    // Crear un lote inicial reducido (25 partículas) para no saturar la vista
+    for (let i = 0; i < 25; i++) {
+        createParticle();
+    }
+
+    // Seguir generando una partícula nueva cada 1.5 segundos
+    setInterval(createParticle, 1500);
+}
+
+// ================= LÓGICA DEL CONTADOR ANIMADO (PÁGINA PREMIOS) =================
+const counterElement = document.getElementById('globalAwardsCounter');
+
+if (counterElement) {
+    const target = +counterElement.getAttribute('data-target');
+    const duration = 2500; // Duración de la animación en milisegundos (2.5 segundos)
+    
+    const startCounting = () => {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            // Función matemática (easeOutExpo) para que empiece muy rápido y termine lento
+            const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            
+            counterElement.innerText = Math.floor(easeProgress * target) + "+";
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    };
+
+    // Usamos Intersection Observer para que la animación inicie al verse en pantalla
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            startCounting();
+            observer.disconnect(); // Desconectamos para que cuente solo una vez
+        }
+    }, { threshold: 0.5 });
+
+    observer.observe(counterElement);
+}
+
+// ================= REPRODUCTOR MUSICAL (EASTER EGG EN PREMIOS) =================
+const playMusicBtn = document.getElementById('playMusicBtn');
+const ostAudio = document.getElementById('ostAudio');
+
+if (playMusicBtn && ostAudio) {
+    // Controlar volumen inicial (0.5 es el 50%) para que no asuste al usuario
+    ostAudio.volume = 0.5;
+
+    playMusicBtn.addEventListener('click', () => {
+        if (ostAudio.paused) {
+            ostAudio.play();
+            playMusicBtn.classList.add('playing');
+            playMusicBtn.innerHTML = '<span>⏸</span>'; // Cambia a ícono de Pausa
+        } else {
+            ostAudio.pause();
+            playMusicBtn.classList.remove('playing');
+            playMusicBtn.innerHTML = '<span>▶</span>'; // Cambia a ícono de Play
+        }
+    });
+
+    // Cuando la canción termina, restaurar el botón automáticamente
+    ostAudio.addEventListener('ended', () => {
+        playMusicBtn.classList.remove('playing');
+        playMusicBtn.innerHTML = '<span>▶</span>';
+    });
+}
