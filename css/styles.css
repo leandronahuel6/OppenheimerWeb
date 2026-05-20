@@ -1699,3 +1699,94 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
     -webkit-overflow-scrolling: touch; /* Hace que el scroll en móviles sea suave */
     padding-bottom: 1rem; /* Espacio para la barra de scroll si aparece */
 }
+
+/* ================= PÁGINA ERROR 404 ================= */
+.error-page {
+    background-color: #050505;
+    /* Un fondo sutil de ruido o trama le quedaría genial, por ahora usamos un gradiente oscuro */
+    background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+}
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2rem;
+    text-align: center;
+}
+
+.error-content {
+    max-width: 700px;
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(255, 50, 50, 0.2);
+    padding: 4rem 3rem;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+}
+
+.error-code {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 8rem;
+    color: #ff3333; /* Rojo de emergencia */
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px rgba(255, 50, 50, 0.4);
+}
+
+.error-title {
+    font-family: 'Special Elite', monospace;
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.error-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #ff3333;
+    margin: 0 auto 1.5rem auto;
+}
+
+.error-text {
+    font-size: 1.1rem;
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.error-directive {
+    font-family: 'Special Elite', monospace;
+    color: #ff3333;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+.return-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: transparent;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    border: 1px solid #fff;
+    transition: all 0.3s ease;
+}
+
+.return-btn:hover {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .error-code { font-size: 6rem; }
+    .error-title { font-size: 1.2rem; }
+    .error-content { padding: 3rem 1.5rem; }
+}
