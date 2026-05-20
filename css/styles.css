@@ -1182,7 +1182,7 @@ img[alt="70MM"]:hover { opacity: 1; transform: scale(1.05); }
     justify-content: center;
     align-items: center;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(5, 5, 5, 1)),
-                url('../img/Barbenheimer.jpg') center / cover fixed;
+                url('../img/Barbenheimer.webp') center / cover fixed;
     text-align: center;
     overflow: hidden;
     margin-top: 60px;
